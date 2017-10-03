@@ -1,0 +1,19 @@
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\Test.dll
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\Test.pdb
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\spil.exe
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\spil.pdb
+D:\dmo170x\projekter\spil\spil\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+D:\dmo170x\projekter\spil\spil\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+D:\dmo170x\projekter\spil\spil\Test\obj\Debug\Test.dll
+D:\dmo170x\projekter\spil\spil\Test\obj\Debug\Test.pdb
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\Test.dll
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\Test.pdb
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\spil.exe
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\spil.pdb
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\bin\Debug\spil.exe.config
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.dll
+C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.pdb
