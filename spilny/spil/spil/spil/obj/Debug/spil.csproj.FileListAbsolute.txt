@@ -11,3 +11,10 @@ C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\s
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\spil\obj\Debug\spil.csproj.CoreCompileInputs.cache
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\spil\obj\Debug\spil.exe
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\spil\obj\Debug\spil.pdb
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\bin\Debug\spil.exe.config
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\bin\Debug\spil.exe
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\bin\Debug\spil.pdb
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.csprojResolveAssemblyReference.cache
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.csproj.CoreCompileInputs.cache
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.exe
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.pdb
