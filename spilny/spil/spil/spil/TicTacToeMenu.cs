@@ -1,11 +1,14 @@
 ﻿using System;
 
 
-//Hej
+
 namespace spil
 {
+
     public class TicTacToeMenu
     {
+        //Hej
+
         int Gamecheck = 0;
         int Variation = 0;
         TicTacToe ticTacToe {get; set; }
