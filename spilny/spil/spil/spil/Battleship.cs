@@ -32,7 +32,7 @@ namespace spil
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "10 *  " + GameBoard2[0, 9] + "  *  " + GameBoard2[1, 9] + "  *  " + GameBoard2[2, 9] + "  *  " + GameBoard2[3, 9] + "  *  " + GameBoard2[4, 9] + "  *  " + GameBoard2[5, 9] + "  *  " + GameBoard2[6, 9] + "  *  " + GameBoard2[7, 9] + "  *  " + GameBoard2[8, 9] + "  *  " + GameBoard2[9, 9] + "  *  " + " \n";
+            resultat = resultat + "10*  " + GameBoard2[0, 9] + "  *  " + GameBoard2[1, 9] + "  *  " + GameBoard2[2, 9] + "  *  " + GameBoard2[3, 9] + "  *  " + GameBoard2[4, 9] + "  *  " + GameBoard2[5, 9] + "  *  " + GameBoard2[6, 9] + "  *  " + GameBoard2[7, 9] + "  *  " + GameBoard2[8, 9] + "  *  " + GameBoard2[9, 9] + "  *  " + " \n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
