@@ -76,11 +76,20 @@ namespace spil
             return resultat;
         }
 
-        internal void SætSkib(int a, int b)
+        internal void SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
-            GameBoard2[a - 1, b - 1] = 'D';
 
+            int x = a;
+            int y = b;
+            //d = SLength
+
+
+
+            for (int i = 0; i <= d ; i = i + 1)
+            {
+                GameBoard2[a + i - 1, b - 1] = c;
+            }
 
             
         }
