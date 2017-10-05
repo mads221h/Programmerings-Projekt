@@ -40,8 +40,8 @@ namespace spil
             Console.WriteLine("Battleship");
             Console.WriteLine();
             Console.WriteLine("1. Opret nyt spil");
-            Console.WriteLine("2. Set en brik");
-            Console.WriteLine("3. Flyt en brik");
+            Console.WriteLine("2. Sæt dine skibe");
+            Console.WriteLine("3. Skyd skibe");
             Console.WriteLine();
             Console.WriteLine("0. exit");
         }
