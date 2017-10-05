@@ -8,6 +8,8 @@ namespace spil
 {
     class BattleshipMenu
     {
+        
+
         Battleship battleship { get; set; }
         public void show()
         {
@@ -68,8 +70,26 @@ namespace spil
         {
 
         }
+        private int spilletur = 1;
         private void DoActionFor3()
         {
+
+            string tur = "";
+            if (spilletur == 1)
+            {
+                tur = "player 1";
+            }
+            else if (spilletur == 0)
+            {
+                tur = "Player 2";
+            }
+            Console.WriteLine(tur);
+            Console.WriteLine("vælg x cordinaterne");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("vælg y cordinaterne");
+            int y = Convert.ToInt32(Console.ReadLine());
+            battleship.Skydbrik(x, y, tur);
+            battleship.Validate();
 
         }
     }
