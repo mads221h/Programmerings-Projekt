@@ -92,16 +92,20 @@ namespace spil
         private void DoActionFor3()
         {
 
-            string tur = "";
-            if (spilletur == 1)
+            char tur;
+            if (spilletur == 0)
             {
-                tur = "player 1";
+                tur = '1';
             }
-            else if (spilletur == 0)
+            else if (spilletur == 1)
             {
-                tur = "Player 2";
+                tur = '2';
             }
-            Console.WriteLine(tur);
+            else
+            {
+                tur = '0';
+            }
+            Console.WriteLine("Player ",tur);
             Console.WriteLine("vælg x cordinaterne");
             int x = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("vælg y cordinaterne");
