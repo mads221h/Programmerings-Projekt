@@ -82,13 +82,13 @@ namespace spil
 
             int x = a;
             int y = b;
-            //d = SLength
-
+            //d = SLength || type
+            //c = skibstype (D || H)
 
 
             for (int i = 0; i <= d ; i = i + 1)
             {
-                GameBoard2[a + i - 1, b - 1] = c;
+                GameBoard2[x + i - 1, y - 1] = c;
             }
 
             
