@@ -92,5 +92,23 @@ namespace spil
                 }
             }
         }
+
+        internal void SætSkib(int a, int b, int d, char c)
+        {
+            //Mangler:
+
+            int x = a;
+            int y = b;
+            //d = SLength
+
+
+
+            for (int i = 0; i <= d; i = i + 1)
+            {
+                GameBoard2[a + i - 1, b - 1] = c;
+            }
+
+
+        }
     }
 }
