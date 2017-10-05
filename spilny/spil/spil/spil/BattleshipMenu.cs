@@ -67,6 +67,20 @@ namespace spil
         private void DoActionFor2()
         {
 
+           
+            
+            Console.WriteLine("Indtast x-coordinaten");
+
+           int x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Indtast y-coordinat");
+
+           int y = Convert.ToInt32(Console.ReadLine());
+
+            battleship.SætSkib(x, y);
+
+            //Battleship.
+
         }
         private void DoActionFor3()
         {

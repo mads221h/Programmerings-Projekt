@@ -75,5 +75,17 @@ namespace spil
 
             return resultat;
         }
+
+        internal void SætSkib(int a, int b)
+        {
+            //Mangler:
+            GameBoard2[a - 1, b - 1] = 'D';
+
+
+            
+        }
+
+
     }
+
 }
