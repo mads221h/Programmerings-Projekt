@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\..\..\Desktop\BackUp.cs" />
     <Compile Include="Battleship.cs" />
     <Compile Include="BattleshipMenu.cs" />
     <Compile Include="GameMenu.cs" />
