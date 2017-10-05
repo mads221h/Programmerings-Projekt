@@ -27,6 +27,9 @@ namespace spil
             } while (running);
         }
 
+        
+
+
         private void ShowMenu()
         {
             Console.Clear();
