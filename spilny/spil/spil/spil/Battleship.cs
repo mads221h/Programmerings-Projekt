@@ -83,18 +83,38 @@ namespace spil
 
         internal void Skydbrik(int x, int y, char tur)
         {
-            GameBoard2[x, y] = 'x';
+            
             if (tur == '1')
             {
-                if(GameBoard2[x,y] == ' ')
+                if(GameBoard2[x,y] == ' ')//GameBoard3 modspillers board
                 {
-
+                    GameBoard2[x, y] = 'o';//GameBoard2 sin egen skydeboard
+                    Console.WriteLine("plask");
                 }
-                if(GameBoard2[x, y] == 'x')
+                if (GameBoard2[x, y] == 'x')//GameBoard2 sin egen skydeboard
                 {
-
+                    Console.WriteLine("Du har allerede ramt her");
                 }
-                GameBoard2[x, y] = 'x';
+                else
+                {
+                    GameBoard2[x, y] = 'x';//GameBoard3 modspilleres board
+                }
+            }
+            if (tur == '2')
+            {
+                if (GameBoard2[x, y] == ' ')//GameBoard2 modspillers board
+                {
+                    GameBoard2[x, y] = 'o';//GameBoard4 sin egen skydeboard
+                    Console.WriteLine("plask");
+                }
+                if (GameBoard2[x, y] == 'x')//GameBoard4 sin egen skydeboard
+                {
+                    Console.WriteLine("Du har allerede ramt her");
+                }
+                else
+                {
+                    GameBoard2[x, y] = 'x';//GameBoard2 modspilleres board
+                }
             }
         }
 
