@@ -8,7 +8,7 @@ namespace spil
 {
     class  GameMenu
     {
-        bool playerOne = true;
+        //bool playerOne = true;
         public void Show()
         {
             bool running = true;

@@ -76,6 +76,28 @@ namespace spil
             return resultat;
         }
 
+        internal void Validate()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Skydbrik(int x, int y, char tur)
+        {
+            GameBoard2[x, y] = 'x';
+            if (tur == '1')
+            {
+                if(GameBoard2[x,y] == ' ')
+                {
+
+                }
+                if(GameBoard2[x, y] == 'x')
+                {
+
+                }
+                GameBoard2[x, y] = 'x';
+            }
+        }
+
         internal void SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
@@ -86,15 +108,13 @@ namespace spil
             //c = skibstype (D || H)
 
 
-            for (int i = 0; i <= d ; i = i + 1)
+            for (int i = 0; i <= d; i = i + 1)
             {
                 GameBoard2[x + i - 1, y - 1] = c;
             }
 
-            
+
         }
-
-
     }
 
 }
