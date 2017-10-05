@@ -75,24 +75,6 @@ namespace spil
 
             return resultat;
         }
-
-        internal void Validate()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void Skydbrik(int x, int y, string tur)
-        {
-            if (tur == "player 1")
-            {
-                GameBoard2[x, y] = 'x';
-                if(GameBoard2[x,y] == 'b')
-                {
-                    GameBoard2[x, y] = 'x';
-                }
-            }
-        }
-
         internal void SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
@@ -111,4 +93,5 @@ namespace spil
 
         }
     }
+
 }
