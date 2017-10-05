@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace spil
 {
-    class GameMenu
+    class  GameMenu
     {
         bool playerOne = true;
         public void Show()
