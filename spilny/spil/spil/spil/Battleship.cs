@@ -12,8 +12,10 @@ namespace spil
 
         public Battleship()
         {
+
+            //vi laver Gameboard2
             GameBoard2 = new char[10, 10] {
-                {'H', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -28,6 +30,7 @@ namespace spil
 
         public string GetGameBoardView()
         {
+            
             string resultat = "";
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
@@ -72,7 +75,7 @@ namespace spil
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
-
+            
             return resultat;
         }
 
