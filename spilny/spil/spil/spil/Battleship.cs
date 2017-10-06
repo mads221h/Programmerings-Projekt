@@ -121,6 +121,10 @@ namespace spil
         internal string SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
+
+            string Success = "";
+            bool Collision = false;
+
             
             int x = a;
             int y = b;
@@ -129,16 +133,37 @@ namespace spil
 
             //string Brikker = "HBUDP";
 
- //Lav en forløkke som tester for fejl
-            
-            
+            //Lav en forløkke som tester for fejl
+
+            // mindre eller mindre og lig hva' satan.
+
+            if (x <= 10 - d && y <= 10)
+            {
+                for (int i = 0; i <= d; i = i + 1)
+                {
+                    if (GameBoard2[x + i - 1, y - 1] != ' ')
+                    {
+                        Collision = true;
+                    }
+                }
+            }
+
+            if (x <= 10 - d && y <= 10 && !Collision)
+            {
                 for (int i = 0; i <= d; i = i + 1)
                 {
                     GameBoard2[x + i - 1, y - 1] = c;
                 }
 
-            return "Plask";
-            
+                Success = "Correct";
+            }
+            else
+            {
+                Success = "Fejl";
+            }
+                    
+            return Success;
+
         }
     }
 

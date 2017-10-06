@@ -72,11 +72,14 @@ namespace spil
             int ShipLength = 0;
             char ShipName = ' ';
 
+            
             int NumHangar = 1;
             int NumBattleShip = 2;
             int NumDestroyer = 2;
             int NumUbåd = 1;
             int NumPatruljeBåd = 3;
+
+            //Skibslængden skal være 1 mindre.
 
             bool PuttingShip = false;
 
@@ -85,6 +88,7 @@ namespace spil
                 //hangership
                 while (NumHangar > 0)
                 {
+
                     Console.WriteLine("Du har " + NumHangar + " Hangarskibe tilbage");
 
                     Console.WriteLine("Indtast x-coordinaten");
@@ -96,16 +100,28 @@ namespace spil
                     int y = Convert.ToInt32(Console.ReadLine());
 
 
-
                     ShipLength = 5;
                     ShipName = 'H';
 
-                    battleship.SætSkib(x, y, ShipLength, ShipName);
-
                     
 
+                    //Løst problemet med grænser ved at sætte afgrænsninger.
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName) == "Correct")
+                    {
+                        battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                        NumHangar--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldig position, prøv igen.");
+                        Console.ReadLine();
+                    }
+
+
                     Console.WriteLine(battleship.GetGameBoardView());
-                    NumHangar--;
+
+
                 }
 
 
@@ -124,11 +140,23 @@ namespace spil
 
                     ShipLength = 4;
                     ShipName = 'B';
-                    battleship.SætSkib(x, y, ShipLength, ShipName);
 
+
+                    
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName) == "Correct")
+                    {
+                        battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                        NumBattleShip--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldig position, prøv igen.");
+                        Console.ReadLine();
+                    }
 
                     Console.WriteLine(battleship.GetGameBoardView());
-                    NumBattleShip--;
+                    
 
 
                 }
@@ -147,11 +175,22 @@ namespace spil
 
                     ShipLength = 3;
                     ShipName = 'D';
-                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName) == "Correct")
+                    {
+                        battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                        NumDestroyer--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldig position, prøv igen.");
+                        Console.ReadLine();
+                    }
 
 
                     Console.WriteLine(battleship.GetGameBoardView());
-                    NumDestroyer--;
+                    
 
 
                 }
@@ -171,11 +210,22 @@ namespace spil
 
                     ShipLength = 3;
                     ShipName = 'U';
-                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName) == "Correct")
+                    {
+                        battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                        NumUbåd--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldig position, prøv igen.");
+                        Console.ReadLine();
+                    }
 
 
                     Console.WriteLine(battleship.GetGameBoardView());
-                    NumUbåd--;
+                    
 
 
                 }
@@ -195,11 +245,22 @@ namespace spil
 
                     ShipLength = 2;
                     ShipName = 'P';
-                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName) == "Correct")
+                    {
+                        battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                        NumPatruljeBåd--;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldig position, prøv igen.");
+                        Console.ReadLine();
+                    }
 
 
                     Console.WriteLine(battleship.GetGameBoardView());
-                    NumPatruljeBåd--;
+                    
 
 
                 }
