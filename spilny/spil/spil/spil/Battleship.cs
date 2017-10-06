@@ -138,22 +138,27 @@ namespace spil
             }
         }
 
-        internal void SætSkib(int a, int b, int d, char c)
+        internal string SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
-
+            
             int x = a;
             int y = b;
             //d = SLength || type
             //c = skibstype (D || H)
 
+            //string Brikker = "HBUDP";
 
-            for (int i = 0; i <= d; i = i + 1)
-            {
-                GameBoard2[x + i - 1, y - 1] = c;
-            }
+ //Lav en forløkke som tester for fejl
+            
+            
+                for (int i = 0; i <= d; i = i + 1)
+                {
+                    GameBoard2[x + i - 1, y - 1] = c;
+                }
 
-
+            return "Plask";
+            
         }
     }
 

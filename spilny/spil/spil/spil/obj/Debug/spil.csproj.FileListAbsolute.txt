@@ -32,3 +32,10 @@ C:\Users\Mads\source\repos\Programmerings-Projekt2\Programmerings-Projekt\spilny
 C:\Users\Mads\source\repos\Programmerings-Projekt2\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.csproj.CoreCompileInputs.cache
 C:\Users\Mads\source\repos\Programmerings-Projekt2\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.exe
 C:\Users\Mads\source\repos\Programmerings-Projekt2\Programmerings-Projekt\spilny\spil\spil\spil\obj\Debug\spil.pdb
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\bin\Debug\spil.exe.config
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\bin\Debug\spil.exe
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\bin\Debug\spil.pdb
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\obj\Debug\spil.csprojResolveAssemblyReference.cache
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\obj\Debug\spil.csproj.CoreCompileInputs.cache
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\obj\Debug\spil.exe
+C:\Users\Natasha Drost\Source\Repos\Programmerings-Projekt3\spilny\spil\spil\spil\obj\Debug\spil.pdb

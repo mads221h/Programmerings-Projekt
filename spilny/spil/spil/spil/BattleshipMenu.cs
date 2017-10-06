@@ -69,24 +69,143 @@ namespace spil
         private void DoActionFor2()
         {
 
-            int SLength = 3;
-            
-            Console.WriteLine("Indtast x-coordinaten");
-          
-            int x = Convert.ToInt32(Console.ReadLine());
+            int ShipLength = 0;
+            char ShipName = ' ';
 
-            
+            int NumHangar = 1;
+            int NumBattleShip = 2;
+            int NumDestroyer = 2;
+            int NumUbåd = 1;
+            int NumPatruljeBåd = 3;
 
-            Console.WriteLine("Indtast y-coordinat");
+            bool PuttingShip = false;
 
-           int y = Convert.ToInt32(Console.ReadLine());
+            while (!PuttingShip)
+            {
+                //hangership
+                while (NumHangar > 0)
+                {
+                    Console.WriteLine("Du har " + NumHangar + " Hangarskibe tilbage");
 
-            
+                    Console.WriteLine("Indtast x-coordinaten");
 
-            battleship.SætSkib(x, y, SLength, 'd');
+                    int x = Convert.ToInt32(Console.ReadLine());
 
-            //Battleship.
+                    Console.WriteLine("Indtast y-coordinat");
 
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+
+
+                    ShipLength = 5;
+                    ShipName = 'H';
+
+                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+                    
+
+                    Console.WriteLine(battleship.GetGameBoardView());
+                    NumHangar--;
+                }
+
+
+                //Battleship.
+                while (NumBattleShip > 0)
+                {
+                    Console.WriteLine("Du har " + NumBattleShip + " slagskibe tilbage");
+
+                    Console.WriteLine("Indtast x-coordinaten");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Indtast y-coordinat");
+
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    ShipLength = 4;
+                    ShipName = 'B';
+                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+
+                    Console.WriteLine(battleship.GetGameBoardView());
+                    NumBattleShip--;
+
+
+                }
+                //Destroyer.
+                while (NumDestroyer > 0)
+                {
+                    Console.WriteLine("Du har " + NumDestroyer + " destroyer tilbage");
+
+                    Console.WriteLine("Indtast x-coordinaten");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Indtast y-coordinat");
+
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    ShipLength = 3;
+                    ShipName = 'D';
+                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+
+                    Console.WriteLine(battleship.GetGameBoardView());
+                    NumDestroyer--;
+
+
+                }
+
+                //Destroyer.
+                while (NumUbåd > 0)
+                {
+                    Console.WriteLine("Du har " + NumUbåd + " ubåd tilbage");
+
+                    Console.WriteLine("Indtast x-coordinaten");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Indtast y-coordinat");
+
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    ShipLength = 3;
+                    ShipName = 'U';
+                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+
+                    Console.WriteLine(battleship.GetGameBoardView());
+                    NumUbåd--;
+
+
+                }
+
+                //Destroyer.
+                while (NumPatruljeBåd > 0)
+                {
+                    Console.WriteLine("Du har " + NumPatruljeBåd + " patruljebåd tilbage");
+
+                    Console.WriteLine("Indtast x-coordinaten");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Indtast y-coordinat");
+
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    ShipLength = 2;
+                    ShipName = 'P';
+                    battleship.SætSkib(x, y, ShipLength, ShipName);
+
+
+                    Console.WriteLine(battleship.GetGameBoardView());
+                    NumPatruljeBåd--;
+
+
+                }
+
+                PuttingShip = true;
+            }
         }
         private void DoActionFor3()
         {
