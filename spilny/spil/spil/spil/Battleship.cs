@@ -13,7 +13,7 @@ namespace spil
         public Battleship()
         {
             GameBoard2 = new char[10, 10] {
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {'H', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -78,7 +78,26 @@ namespace spil
 
         internal void Validate()
         {
-            throw new NotImplementedException();
+            int checkaltx = 9;
+            string skibenavne = "HSDUP";
+            while (checkaltx >= 0)
+            {
+
+                for (int a = 0; a > 10; a++) { 
+                int checkalty = a;
+                    if (skibenavne.Contains(GameBoard2[checkaltx, checkalty]))
+                    {
+                        Console.WriteLine("Spillet er igang");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spillet er slut");
+                    }
+            }
+            }
+            
+
+
         }
 
         internal void Skydbrik(int x, int y, char tur)
@@ -114,6 +133,7 @@ namespace spil
                 else
                 {
                     GameBoard2[x, y] = 'x';//GameBoard2 modspilleres board
+                    Console.WriteLine("Ramt");
                 }
             }
         }

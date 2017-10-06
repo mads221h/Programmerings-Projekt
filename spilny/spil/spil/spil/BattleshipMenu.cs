@@ -88,10 +88,10 @@ namespace spil
             //Battleship.
 
         }
-        private int spilletur = 1;
         private void DoActionFor3()
         {
-
+            
+        int spilletur = 1;
             char tur;
             if (spilletur == 0)
             {
@@ -103,9 +103,9 @@ namespace spil
             }
             else
             {
-                tur = '0';
+                tur = '1';
             }
-            Console.WriteLine("Player ",tur);
+            Console.WriteLine("Player " + tur);
             Console.WriteLine("vælg x cordinaterne");
             int x = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("vælg y cordinaterne");
