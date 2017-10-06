@@ -118,7 +118,7 @@ namespace spil
             }
         }
 
-        internal void SætSkib(int a, int b, int d, char c)
+        internal string SætSkib(int a, int b, int d, char c)
         {
             //Mangler:
             
@@ -136,8 +136,8 @@ namespace spil
                 {
                     GameBoard2[x + i - 1, y - 1] = c;
                 }
-            
 
+            return "Plask";
             
         }
     }

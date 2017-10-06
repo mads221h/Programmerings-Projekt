@@ -102,6 +102,8 @@ namespace spil
 
                     battleship.SætSkib(x, y, ShipLength, ShipName);
 
+                    
+
                     Console.WriteLine(battleship.GetGameBoardView());
                     NumHangar--;
                 }
