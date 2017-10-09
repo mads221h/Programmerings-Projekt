@@ -212,52 +212,84 @@ namespace spil
             }
         }
 
-        internal string SætSkib(int a, int b, int d, char c)
+        internal string SætSkib(int a, int b, int d, char c, string e)
         {
-            //Mangler:
+            
 
             string Success = "";
             bool Collision = false;
 
             
+            string Rotation = e;
             int x = a;
             int y = b;
             //d = SLength || type
             //c = skibstype (D || H)
 
-            //string Brikker = "HBUDP";
+            
 
             //Lav en forløkke som tester for fejl
 
-            // mindre eller mindre og lig hva' satan.
+            
 
-
-            //sætter -1 ved d da løkken laver skibene et tak for langt.
-            if (x <= 10 - d && y <= 10)
+            //y = ja rotation, n = nej rotation
+            if (Rotation == "n")
             {
-                for (int i = 0; i <= d-1; i = i + 1)
+                //sætter -1 ved d da løkken laver skibene et tak for langt.
+                if (x <= 10 - d && y <= 10)
                 {
-                    if (GameBoard2[x + i - 1, y - 1] != ' ')
+                    for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        Collision = true;
+                        if (GameBoard2[x + i - 1, y - 1] != ' ')
+                        {
+                            Collision = true;
+                        }
                     }
                 }
-            }
 
-            if (x <= 10 - d && y <= 10 && !Collision)
-            {
-                for (int i = 0; i <= d-1; i = i + 1)
+                if (x <= 10 - d && y <= 10 && !Collision)
                 {
-                    GameBoard2[x + i - 1, y - 1] = c;
-                }
+                    for (int i = 0; i <= d - 1; i = i + 1)
+                    {
+                        GameBoard2[x + i - 1, y - 1] = c;
+                    }
 
-                Success = "Correct";
+                    Success = "Correct";
+                }
+                else
+                {
+                    Success = "Fejl";
+                }
             }
             else
             {
-                Success = "Fejl";
-            }
-                    
+                if (x <= 10 - d && y <= 10)
+                {
+                    for (int i = 0; i <= d - 1; i = i + 1)
+                    {
+                        if (GameBoard2[x - 1, y + i - 1] != ' ')
+                        {
+                            Collision = true;
+                        }
+                    }
+                }
+
+                if (x <= 10 - d && y <= 10 && !Collision)
+                {
+                    for (int i = 0; i <= d - 1; i = i + 1)
+                    {
+                        GameBoard2[x - 1, y + i - 1] = c;
+                    }
+
+                    Success = "Correct";
+                }
+                else
+                {
+                    Success = "Fejl";
+                }
+
+            }   
+
             return Success;
 
         }
