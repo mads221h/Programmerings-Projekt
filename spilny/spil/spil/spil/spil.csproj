@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Battleship.cs" />
     <Compile Include="BattleshipMenu.cs" />
+    <Compile Include="GameBoard.cs" />
     <Compile Include="GameMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
