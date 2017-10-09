@@ -392,12 +392,7 @@ namespace spil
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
-
                     Console.WriteLine(battleship.GetGameBoardView2());
-                    
-
-
                 }
 
                 //Spiller valg
@@ -408,6 +403,8 @@ namespace spil
                 }
             }
         }
+
+
         private void DoActionFor3()
         {
             
