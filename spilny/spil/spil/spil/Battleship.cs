@@ -8,6 +8,7 @@ namespace spil
 {
     public class Battleship
     {
+        public string winnerstring = " ";
         public char[,] GameBoard2 { get; set; }
 
         public Battleship()
@@ -79,25 +80,32 @@ namespace spil
             return resultat;
         }
 
-        internal void Validate()
+        public string Validate()
         {
+            
             int checkaltx = 9;
             string skibenavne = "HSDUP";
+            
+            
             while (checkaltx >= 0)
             {
-
-                for (int a = 0; a > 10; a++) { 
+                
+                for (int a = 0; a < 10; a++) { 
                 int checkalty = a;
-                    if (skibenavne.Contains(GameBoard2[checkaltx, checkalty]))
+                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 /*&& GameBoard2[checkaltx, checkalty] != ' '*/)
                     {
-                        Console.WriteLine("Spillet er igang");
+                        winnerstring = "";
+                        break;
                     }
-                    else
+                    else 
                     {
-                        Console.WriteLine("Spillet er slut");
+                        winnerstring = "Winner";
+                        
                     }
             }
+                    checkaltx--;
             }
+            return winnerstring;
             
 
 
@@ -108,37 +116,39 @@ namespace spil
             
             if (tur == '1')
             {
-                if(GameBoard2[x,y] == ' ')//GameBoard3 modspillers board
+                if(GameBoard2[x - 1,y - 1] == ' ')//GameBoard3 modspillers board
                 {
-                    GameBoard2[x, y] = 'o';//GameBoard2 sin egen skydeboard
+                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
                     Console.WriteLine("plask");
                 }
-                if (GameBoard2[x, y] == 'x')//GameBoard2 sin egen skydeboard
+                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
                 }
                 else
                 {
-                    GameBoard2[x, y] = 'x';//GameBoard3 modspilleres board
+                    GameBoard2[x - 1,y - 1] = 'x';//GameBoard3 modspilleres board
                 }
             }
             if (tur == '2')
             {
-                if (GameBoard2[x, y] == ' ')//GameBoard2 modspillers board
+                
+                if (GameBoard2[x - 1,y - 1] == ' ')//GameBoard2 modspillers board
                 {
-                    GameBoard2[x, y] = 'o';//GameBoard4 sin egen skydeboard
+                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard4 sin egen skydeboard
                     Console.WriteLine("plask");
                 }
-                if (GameBoard2[x, y] == 'x')//GameBoard4 sin egen skydeboard
+                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard4 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
                 }
                 else
                 {
-                    GameBoard2[x, y] = 'x';//GameBoard2 modspilleres board
+                    GameBoard2[x - 1,y - 1] = 'x';//GameBoard2 modspilleres board
                     Console.WriteLine("Ramt");
                 }
             }
+            
         }
 
         internal string SætSkib(int a, int b, int d, char c)

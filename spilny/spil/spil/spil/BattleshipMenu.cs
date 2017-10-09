@@ -292,8 +292,14 @@ namespace spil
             int y = Convert.ToInt32(Console.ReadLine());
             battleship.Skydbrik(x, y, tur);
             battleship.Validate();
+            if (battleship.winnerstring == "Winner")
+            {
+                Console.WriteLine("Spillet er slut");
+                Console.ReadLine();
+            }
 
         }
+        
     }
 }
 
