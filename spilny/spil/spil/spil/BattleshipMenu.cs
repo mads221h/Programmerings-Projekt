@@ -36,7 +36,7 @@ namespace spil
             Console.Clear();
             if (battleship != null)
             {
-                Console.WriteLine(battleship.GetGameBoardView());
+                Console.WriteLine(battleship.GetGameBoardView2());
             }
 
             Console.WriteLine("Battleship");
@@ -119,7 +119,7 @@ namespace spil
                     }
 
 
-                    Console.WriteLine(battleship.GetGameBoardView());
+                    Console.WriteLine(battleship.GetGameBoardView2());
 
 
                 }
@@ -155,7 +155,7 @@ namespace spil
                         Console.ReadLine();
                     }
 
-                    Console.WriteLine(battleship.GetGameBoardView());
+                    Console.WriteLine(battleship.GetGameBoardView2());
                     
 
 
@@ -189,7 +189,7 @@ namespace spil
                     }
 
 
-                    Console.WriteLine(battleship.GetGameBoardView());
+                    Console.WriteLine(battleship.GetGameBoardView2());
                     
 
 
@@ -224,7 +224,7 @@ namespace spil
                     }
 
 
-                    Console.WriteLine(battleship.GetGameBoardView());
+                    Console.WriteLine(battleship.GetGameBoardView2());
                     
 
 
@@ -259,7 +259,7 @@ namespace spil
                     }
 
 
-                    Console.WriteLine(battleship.GetGameBoardView());
+                    Console.WriteLine(battleship.GetGameBoardView2());
                     
 
 
