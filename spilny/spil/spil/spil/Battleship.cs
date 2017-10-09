@@ -160,9 +160,11 @@ namespace spil
 
             // mindre eller mindre og lig hva' satan.
 
+
+            //sætter -1 ved d da løkken laver skibene et tak for langt.
             if (x <= 10 - d && y <= 10)
             {
-                for (int i = 0; i <= d; i = i + 1)
+                for (int i = 0; i <= d-1; i = i + 1)
                 {
                     if (GameBoard2[x + i - 1, y - 1] != ' ')
                     {
@@ -173,7 +175,7 @@ namespace spil
 
             if (x <= 10 - d && y <= 10 && !Collision)
             {
-                for (int i = 0; i <= d; i = i + 1)
+                for (int i = 0; i <= d-1; i = i + 1)
                 {
                     GameBoard2[x + i - 1, y - 1] = c;
                 }
