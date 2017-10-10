@@ -86,7 +86,7 @@ namespace spil
             bool PuttingShip = false;
 
             //ændre til 1 Husk mig!
-            int PuttingShipPlayer = 2;
+            int PuttingShipPlayer = 1;
 
             //går igennem 2 gange: vi skal lave en værdi som stiger til 2
 
@@ -137,9 +137,9 @@ namespace spil
                     ShipName = 'H';
 
                     //Løst problemet med grænser ved at sætte afgrænsninger.
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation, PuttingShipPlayer) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
+                        
 
                         NumHangar--;
                     }
@@ -149,9 +149,14 @@ namespace spil
                         Console.ReadLine();
                     }
 
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-
+                    if (PuttingShipPlayer == 1)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                    }
 
                 }
 
@@ -200,9 +205,9 @@ namespace spil
 
 
                     
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation, PuttingShipPlayer) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
+                        
 
                         NumBattleShip--;
                     }
@@ -212,8 +217,14 @@ namespace spil
                         Console.ReadLine();
                     }
 
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
+                    if (PuttingShipPlayer == 1)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                    }
 
 
                 }
@@ -259,9 +270,9 @@ namespace spil
                     ShipLength = 3;
                     ShipName = 'D';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation, PuttingShipPlayer) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
+                        
 
                         NumDestroyer--;
                     }
@@ -271,9 +282,14 @@ namespace spil
                         Console.ReadLine();
                     }
 
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
+                    if (PuttingShipPlayer == 1)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                    }
 
 
                 }
@@ -320,9 +336,9 @@ namespace spil
                     ShipLength = 3;
                     ShipName = 'U';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation, PuttingShipPlayer) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
+                        
 
                         NumUbåd--;
                     }
@@ -332,9 +348,14 @@ namespace spil
                         Console.ReadLine();
                     }
 
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
+                    if (PuttingShipPlayer == 1)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                    }
 
 
                 }
@@ -381,9 +402,9 @@ namespace spil
                     ShipLength = 2;
                     ShipName = 'P';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation, PuttingShipPlayer) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
+                        
 
                         NumPatruljeBåd--;
                     }
@@ -392,7 +413,14 @@ namespace spil
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-                    Console.WriteLine(battleship.GetGameBoardView2());
+                    if (PuttingShipPlayer == 1)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                    }
                 }
 
                 //Spiller valg

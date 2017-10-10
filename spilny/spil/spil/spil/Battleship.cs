@@ -357,9 +357,8 @@ namespace spil
             
         }
 
-        internal string SætSkib(int a, int b, int d, char c, string e)
+        internal string SætSkib(int a, int b, int d, char c, string e, int f)
         {
-            
 
             string Success = "";
             bool Collision = false;
@@ -370,8 +369,8 @@ namespace spil
             int y = b;
             //d = SLength || type
             //c = skibstype (D || H)
-
-            
+            int Spiller = f;
+            //hvis man vil lave flere spillere skal man ændre if(spiller == )
 
             //Lav en forløkke som tester for fejl
 
@@ -383,9 +382,19 @@ namespace spil
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        if (GameBoard2[x + i - 1, y - 1] != ' ')
+                        if (Spiller == 1)
                         {
-                            Collision = true;
+                            if (GameBoard1[x + i - 1, y - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
+                        }
+                        else
+                        {
+                            if (GameBoard2[x + i - 1, y - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
                         }
                     }
                 }
@@ -394,7 +403,14 @@ namespace spil
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        GameBoard2[x + i - 1, y - 1] = c;
+                        if (Spiller == 1)
+                        {
+                            GameBoard1[x + i - 1, y - 1] = c;
+                        }
+                        else
+                        {
+                            GameBoard2[x + i - 1, y - 1] = c;
+                        }
                     }
 
                     Success = "Correct";
@@ -406,13 +422,24 @@ namespace spil
             }
             else
             {
+        //Rotation
                 if (x <= 10 - d && y <= 10)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        if (GameBoard2[x - 1, y + i - 1] != ' ')
+                        if (Spiller == 1)
                         {
-                            Collision = true;
+                            if (GameBoard1[x - 1, y + i - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
+                        }
+                        else
+                        {
+                            if (GameBoard2[x - 1, y + i - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
                         }
                     }
                 }
@@ -421,7 +448,14 @@ namespace spil
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        GameBoard2[x - 1, y + i - 1] = c;
+                        if (Spiller == 1)
+                        {
+                            GameBoard1[x - 1, y + i - 1] = c;
+                        }
+                        else
+                        {
+                            GameBoard2[x - 1, y + i - 1] = c;
+                        }
                     }
 
                     Success = "Correct";
