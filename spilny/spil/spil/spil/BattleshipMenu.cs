@@ -111,6 +111,13 @@ namespace spil
                 int NumUbåd = 1;
                 int NumPatruljeBåd = 3;
 
+                //Alternativ for test
+                //int NumHangar = 0;
+                //int NumBattleShip = 0;
+                //int NumDestroyer = 0;
+                //int NumUbåd = 0;
+                //int NumPatruljeBåd = 1;
+
                 if (PuttingShipPlayer == 1)
                 {
                     Console.WriteLine(battleship.GetGameBoardView1());
@@ -449,12 +456,16 @@ namespace spil
                     }
                 }
 
+
+                Console.Clear();
+
                 //Spiller valg
                 PuttingShipPlayer++;
                 if (PuttingShipPlayer >= 3)
                 {
                     PuttingShip = true;
                 }
+
             }
         }
 
@@ -465,11 +476,13 @@ namespace spil
 
             if (Spiller1 == false)
             {
+                Console.WriteLine(battleship.GetGameBoardView1());
                 Console.WriteLine(battleship.GetGameBoardView3());
-               
+                
             }
             else
             {
+                Console.WriteLine(battleship.GetGameBoardView2());
                 Console.WriteLine(battleship.GetGameBoardView4());
              }
 
@@ -478,17 +491,17 @@ namespace spil
             while (true)
             {
 
-
+                Console.Clear();
 
                 if (Spiller1 == false)
                 {
-
+                    Console.WriteLine(battleship.GetGameBoardView1());
                     Console.WriteLine(battleship.GetGameBoardView3());
                     tur = '1';
                 }
                 else
                 {
-
+                    Console.WriteLine(battleship.GetGameBoardView2());
                     Console.WriteLine(battleship.GetGameBoardView4());
                     tur = '2';
                 }
@@ -527,8 +540,20 @@ namespace spil
 
                     if (battleship.winnerstring == "Winner")
                     {
-                        Console.WriteLine("Spillet er slut");
-                        Console.ReadLine();
+                        
+                        if (!Spiller1)
+                        {
+                            Console.WriteLine("Spiller 1 har vundet");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Spiller 2 har vundet");
+                            Console.ReadLine();
+                        }
+
+                        battleship = new Battleship();
+
                     }
 
                     if (Spiller1)

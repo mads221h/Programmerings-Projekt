@@ -348,6 +348,8 @@ namespace spil
                 {
                     GameBoard2[x - 1,y - 1] = 'x';//GameBoard2 modspilleres board
                     GameBoard3[x - 1, y - 1] = 'x';//sit eget skydeboard
+                    Console.WriteLine("Ramt");
+                    Console.ReadLine();
                 }
             }
 
@@ -403,6 +405,7 @@ namespace spil
                 //sætter -1 ved d da løkken laver skibene et tak for langt.
                 if (x <= 10 - d && y <= 10)
                 {
+
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
                         if (Spiller == 1)
