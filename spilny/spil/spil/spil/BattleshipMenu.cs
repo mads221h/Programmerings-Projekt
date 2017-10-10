@@ -463,6 +463,16 @@ namespace spil
         {
             //int spilletur = 1;
 
+            if (Spiller1 == false)
+            {
+                Console.WriteLine(battleship.GetGameBoardView3());
+               
+            }
+            else
+            {
+                Console.WriteLine(battleship.GetGameBoardView4());
+             }
+
             char tur;
 
             while (true)

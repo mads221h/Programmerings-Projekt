@@ -337,10 +337,12 @@ namespace spil
                     GameBoard3[x - 1,y - 1] = 'o';//GameBoard1 sin egen skydeboard
                     GameBoard2[x - 1, y - 1] = 'o';
                     Console.WriteLine("plask");
+                    Console.ReadLine();
                 }
                 else if (GameBoard3[x - 1, y - 1] == 'x')//GameBoard1 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
+                    Console.ReadLine();
                 }
                 else
                 {
@@ -357,18 +359,21 @@ namespace spil
                     GameBoard4[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
                     GameBoard1[x - 1, y - 1] = 'o';//Modstanderens board
                     Console.WriteLine("plask");
+                    Console.ReadLine();
                 }
                 else if (GameBoard4[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
-                   
+                    Console.ReadLine();
+
                 }
                 else
                 {
                     GameBoard1[x - 1,y - 1] = 'x';//GameBoard1 modspilleres board
                     GameBoard4[x - 1, y - 1] = 'x';//Sit eget skydeboard
                     Console.WriteLine("Ramt");
-                    
+                    Console.ReadLine();
+
                 }
 
             }
