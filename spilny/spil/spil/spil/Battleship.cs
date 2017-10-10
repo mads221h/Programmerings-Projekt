@@ -382,16 +382,51 @@ namespace spil
             
         }
 
-        internal string SætSkib(int a, int b, int d, char c, string e, int f)
+        internal string SætSkib(int d, char c, int f)
         {
+
+            //Sætter x og y
+            Console.WriteLine("Indtast x-coordinaten");
+
+            int x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Indtast y-coordinat");
+
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            //Rotation
+
+            string Rotation = "";
+            while (true)
+            {
+
+                Console.WriteLine("Roter? y = vertikalt / n = Horizontalt");
+
+                string RotationTemp = Console.ReadLine();
+
+                if (RotationTemp == "y")
+                {
+                    Rotation = "y";
+
+                    break;
+                }
+                else if (RotationTemp == "n")
+                {
+
+                    Rotation = "n";
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Ugyldigt valg, prøv igen");
+                }
+            }
+
 
             string Success = "";
             bool Collision = false;
 
-            
-            string Rotation = e;
-            int x = a;
-            int y = b;
+
             //d = SLength || type
             //c = skibstype (D || H)
             int Spiller = f;
