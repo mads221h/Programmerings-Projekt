@@ -283,7 +283,7 @@ namespace spil
             return resultat;
         }
 
-
+        
 
 
         public string Validate()
@@ -298,7 +298,7 @@ namespace spil
                 
                 for (int a = 0; a < 10; a++) { 
                 int checkalty = a;
-                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 /*&& GameBoard2[checkaltx, checkalty] != ' '*/)
+                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 /*&& GameBoard2[checkaltx, checkalty] != ' '*/|| skibenavne.IndexOf(GameBoard1[checkaltx, checkalty]) > -1)
                     {
                         winnerstring = "";
                         break;
@@ -317,42 +317,60 @@ namespace spil
 
         }
 
+        
         internal void Skydbrik(int x, int y, char tur)
         {
+            //Spiller 1 = gameboard 1 && 3
+            //Spiller 2 = gameboard 2 && 4
+
+            //Dette kunne man have brugt:
+            //char[] skibe = { 'H', 'D', 'P', 'U', 'B' };
+            // skibe.Contains(GameBoard2[x - 1, y - 1])
             
+
             if (tur == '1')
             {
-                if(GameBoard2[x - 1,y - 1] == ' ')//GameBoard3 modspillers board
-                {
-                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
-                    Console.WriteLine("plask");
-                }
-                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
-                {
-                    Console.WriteLine("Du har allerede ramt her");
-                }
-                else
-                {
-                    GameBoard2[x - 1,y - 1] = 'x';//GameBoard3 modspilleres board
-                }
-            }
-            if (tur == '2')
-            {
                 
+
                 if (GameBoard2[x - 1,y - 1] == ' ')//GameBoard2 modspillers board
                 {
-                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard4 sin egen skydeboard
+                    GameBoard3[x - 1,y - 1] = 'o';//GameBoard1 sin egen skydeboard
+                    GameBoard2[x - 1, y - 1] = 'o';
                     Console.WriteLine("plask");
                 }
-                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard4 sin egen skydeboard
+                else if (GameBoard3[x - 1, y - 1] == 'x')//GameBoard1 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
                 }
                 else
                 {
                     GameBoard2[x - 1,y - 1] = 'x';//GameBoard2 modspilleres board
-                    Console.WriteLine("Ramt");
+                    GameBoard3[x - 1, y - 1] = 'x';//sit eget skydeboard
                 }
+            }
+
+            if (tur == '2')
+            {
+                
+                if (GameBoard1[x - 1,y - 1] == ' ')//GameBoard1 modspillers board
+                {
+                    GameBoard4[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
+                    GameBoard1[x - 1, y - 1] = 'o';//Modstanderens board
+                    Console.WriteLine("plask");
+                }
+                else if (GameBoard4[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
+                {
+                    Console.WriteLine("Du har allerede ramt her");
+                   
+                }
+                else
+                {
+                    GameBoard1[x - 1,y - 1] = 'x';//GameBoard1 modspilleres board
+                    GameBoard4[x - 1, y - 1] = 'x';//Sit eget skydeboard
+                    Console.WriteLine("Ramt");
+                    
+                }
+
             }
             
         }

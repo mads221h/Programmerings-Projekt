@@ -9,6 +9,10 @@ namespace spil
     class BattleshipMenu
     {
         
+        //spiller = hvis tur det er under skyde fasen.
+        bool Spiller1 = false;
+        bool PlaceringAfSkibe = true;
+        bool PuttingShip = false;
 
         Battleship battleship { get; set; }
         public void show()
@@ -34,9 +38,25 @@ namespace spil
         {
             Console.Clear();
             Console.Clear();
-            if (battleship != null)
+
+            if (battleship != null )
             {
-                Console.WriteLine(battleship.GetGameBoardView2());
+
+
+                if (Spiller1 && !PlaceringAfSkibe)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView1());
+                }
+                else if(!Spiller1 && !PlaceringAfSkibe)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView2());
+                }
+                else
+                {
+                    Console.WriteLine("Setup commencing, place your ships!");
+                }
+                //imellem spillere
+
             }
 
             Console.WriteLine("Battleship");
@@ -68,32 +88,38 @@ namespace spil
         }
         private void DoActionFor2()
         {
-
             int ShipLength = 0;
             char ShipName = ' ';
 
-            
-            int NumHangar = 1;
-            int NumBattleShip = 2;
-            int NumDestroyer = 2;
-            int NumUbåd = 1;
-            int NumPatruljeBåd = 3;
-
             string Rotation = "";
 
-            //Skibslængden skal være 1 mindre.
-
-            bool PuttingShip = false;
-
-            //ændre til 1 Husk mig!
             int PuttingShipPlayer = 1;
 
-            //går igennem 2 gange: vi skal lave en værdi som stiger til 2
-
+            //Kan ikke sætte flere skibe
+            if (PuttingShip)
+            {
+                Console.WriteLine("Kan ikke sætte flere skibe, skyd");
+                Console.ReadLine();
+            }
             //PuttingShipPlayer = 1 -> spiller 1, det samme for 2 -> spiller 2.
 
             while (!PuttingShip)
             {
+                int NumHangar = 1;
+                int NumBattleShip = 2;
+                int NumDestroyer = 2;
+                int NumUbåd = 1;
+                int NumPatruljeBåd = 3;
+
+                if (PuttingShipPlayer == 1)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView1());
+                }
+                else
+                {
+                    Console.WriteLine(battleship.GetGameBoardView2());
+                }
+
                 //hangership
                 while (NumHangar > 0)
                 {
@@ -435,32 +461,82 @@ namespace spil
 
         private void DoActionFor3()
         {
-            
-        int spilletur = 1;
+            //int spilletur = 1;
+
             char tur;
-            if (spilletur == 0)
+
+            while (true)
             {
-                tur = '1';
-            }
-            else if (spilletur == 1)
-            {
-                tur = '2';
-            }
-            else
-            {
-                tur = '1';
-            }
-            Console.WriteLine("Player " + tur);
-            Console.WriteLine("vælg x cordinaterne");
-            int x = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("vælg y cordinaterne");
-            int y = Convert.ToInt32(Console.ReadLine());
-            battleship.Skydbrik(x, y, tur);
-            battleship.Validate();
-            if (battleship.winnerstring == "Winner")
-            {
-                Console.WriteLine("Spillet er slut");
-                Console.ReadLine();
+
+
+
+                if (Spiller1 == false)
+                {
+
+                    Console.WriteLine(battleship.GetGameBoardView3());
+                    tur = '1';
+                }
+                else
+                {
+
+                    Console.WriteLine(battleship.GetGameBoardView4());
+                    tur = '2';
+                }
+
+
+                //char tur;
+                //if (spilletur == 0)
+                //{
+                //    tur = '1';
+                //}
+                //else if (spilletur == 1)
+                //{
+                //    tur = '2';
+                //}
+                //else
+                //{
+                //    tur = '1';
+                //}
+
+
+
+                Console.WriteLine("Player " + tur);
+                Console.WriteLine("vælg x cordinaterne");
+
+                int x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("vælg y cordinaterne");
+                int y = Convert.ToInt32(Console.ReadLine());
+
+                if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
+                {
+
+                    battleship.Skydbrik(x, y, tur);
+
+                    battleship.Validate();
+
+
+                    if (battleship.winnerstring == "Winner")
+                    {
+                        Console.WriteLine("Spillet er slut");
+                        Console.ReadLine();
+                    }
+
+                    if (Spiller1)
+                    {
+                        Spiller1 = false;
+                    }else if(!Spiller1)
+                    {
+                        Spiller1 = true;
+                    }
+
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Ugyldigt valg, skyd inden for boarded");
+                    Console.ReadLine();
+                }
+             
             }
 
         }
