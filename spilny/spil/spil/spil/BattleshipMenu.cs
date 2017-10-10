@@ -58,7 +58,7 @@ namespace spil
                 }
                 else if(!PuttingShip)
                 {
-                    Console.WriteLine("Setup commencing, place your ships!");
+                    Console.WriteLine("Setup fase! Placer jeres skibe!");
                 }
                 
                 //imellem spillere
@@ -89,7 +89,14 @@ namespace spil
 
         private void DoActionFor1()
         {
-            battleship = new Battleship();
+            //Jeg blev træt af at klikke 1 med et uheld.
+            Console.WriteLine("Er du sikker på du vil starte nyt spil? y for ja");
+            if (Console.ReadLine() == "y")
+            {
+                battleship = new Battleship();
+                PuttingShip = false;
+            }
+
 
         }
         private void DoActionFor2()
@@ -248,87 +255,100 @@ namespace spil
         {
             //int spilletur = 1;
 
-            if (Spiller1 == false)
-            {
-                Console.WriteLine(battleship.GetGameBoardView1());
-                Console.WriteLine(battleship.GetGameBoardView3());
-            }
-            else
-            {
-                Console.WriteLine(battleship.GetGameBoardView2());
-                Console.WriteLine(battleship.GetGameBoardView4());
-             }
-
-            char tur;
-
-            while (true)
+            if (PuttingShip)
             {
 
-                Console.Clear();
+
 
                 if (Spiller1 == false)
                 {
                     Console.WriteLine(battleship.GetGameBoardView1());
                     Console.WriteLine(battleship.GetGameBoardView3());
-                    tur = '1';
                 }
                 else
                 {
                     Console.WriteLine(battleship.GetGameBoardView2());
                     Console.WriteLine(battleship.GetGameBoardView4());
-                    tur = '2';
                 }
 
-                Console.WriteLine("Player " + tur);
-                Console.WriteLine("vælg x cordinaterne");
+                char tur;
 
-                int x = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("vælg y cordinaterne");
-                int y = Convert.ToInt32(Console.ReadLine());
-
-                if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
+                while (true)
                 {
 
-                    battleship.Skydbrik(x, y, tur);
+                    Console.Clear();
 
-                    battleship.Validate();
-
-
-                    if (battleship.winnerstring == "Winner")
+                    if (Spiller1 == false)
                     {
-                        
-                        if (!Spiller1)
-                        {
-                            Console.WriteLine("Spiller 1 har vundet");
-                            Console.ReadLine();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Spiller 2 har vundet");
-                            Console.ReadLine();
-                        }
-
-                        battleship = new Battleship();
-                        PuttingShip = false;
-
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                        Console.WriteLine(battleship.GetGameBoardView3());
+                        tur = '1';
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                        Console.WriteLine(battleship.GetGameBoardView4());
+                        tur = '2';
                     }
 
-                    if (Spiller1)
+                    Console.WriteLine("Player " + tur);
+                    Console.WriteLine("vælg x cordinaterne");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("vælg y cordinaterne");
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
                     {
-                        Spiller1 = false;
-                    }else if(!Spiller1)
+
+                        battleship.Skydbrik(x, y, tur);
+
+                        battleship.Validate();
+
+
+
+                        if (battleship.winnerstring == "Winner")
+                        {
+
+                            if (!Spiller1)
+                            {
+                                Console.WriteLine("Spiller 1 har vundet");
+                                Console.ReadLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Spiller 2 har vundet");
+                                Console.ReadLine();
+                            }
+
+                            battleship = new Battleship();
+                            PuttingShip = false;
+                        }
+
+                        if (Spiller1)
+                        {
+                            Spiller1 = false;
+                        }
+                        else if (!Spiller1)
+                        {
+                            Spiller1 = true;
+                        }
+
+                        break;
+                    }
+                    else
                     {
-                        Spiller1 = true;
+                        Console.WriteLine("Ugyldigt valg, skyd inden for boarded");
+                        Console.ReadLine();
                     }
 
-                    break;
                 }
-                else
-                {
-                    Console.WriteLine("Ugyldigt valg, skyd inden for boarded");
-                    Console.ReadLine();
-                }
-             
+
+            }
+            else
+            {
+                Console.WriteLine("Placer skibe først!");
+                Console.ReadLine();
             }
 
         }

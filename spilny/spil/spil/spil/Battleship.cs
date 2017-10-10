@@ -10,14 +10,20 @@ namespace spil
     {
         public string winnerstring = " ";
    
-
+        //Skibe sætning
         public char[,] GameBoard1 { get; set; }
 
         public char[,] GameBoard2 { get; set; }
 
+        //Skydeboards
         public char[,] GameBoard3 { get; set; }
 
         public char[,] GameBoard4 { get; set; }
+        
+        //Hidden boards for ship sinking
+        public char[,] GameBoardHidden1 { get; set; }
+
+        public char[,] GameBoardHidden2 { get; set; }
 
         public Battleship()
         {
@@ -75,6 +81,34 @@ namespace spil
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
             };
 
+            GameBoardHidden1 = new char[10, 10] {
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+            };
+
+            GameBoardHidden2 = new char[10, 10] {
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+            };
+
+
+
         }
         
 
@@ -86,7 +120,7 @@ namespace spil
                 resultat = resultat + "Y\n";
                 resultat = resultat + "  *************************************************************\n";
                 resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-                resultat = resultat + "10 *  " + GameBoard1[0, 9] + "  *  " + GameBoard1[1, 9] + "  *  " + GameBoard1[2, 9] + "  *  " + GameBoard1[3, 9] + "  *  " + GameBoard1[4, 9] + "  *  " + GameBoard1[5, 9] + "  *  " + GameBoard1[6, 9] + "  *  " + GameBoard1[7, 9] + "  *  " + GameBoard1[8, 9] + "  *  " + GameBoard1[9, 9] + "  *  " + "  *\n";
+                resultat = resultat + "10*  " + GameBoard1[0, 9] + "  *  " + GameBoard1[1, 9] + "  *  " + GameBoard1[2, 9] + "  *  " + GameBoard1[3, 9] + "  *  " + GameBoard1[4, 9] + "  *  " + GameBoard1[5, 9] + "  *  " + GameBoard1[6, 9] + "  *  " + GameBoard1[7, 9] + "  *  " + GameBoard1[8, 9] + "  *  " + GameBoard1[9, 9] + "  *  " + "  *\n";
                 resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
                 resultat = resultat + "  *************************************************************\n";
                 resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
@@ -124,11 +158,10 @@ namespace spil
                 resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
                 resultat = resultat + "1 *  " + GameBoard1[0, 0] + "  *  " + GameBoard1[1, 0] + "  *  " + GameBoard1[2, 0] + "  *  " + GameBoard1[3, 0] + "  *  " + GameBoard1[4, 0] + "  *  " + GameBoard1[5, 0] + "  *  " + GameBoard1[6, 0] + "  *  " + GameBoard1[7, 0] + "  *  " + GameBoard1[8, 0] + "  *  " + GameBoard1[9, 0] + "  *  " + "  *\n";
                 resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  ******************(Spiller 1 skibsboard)*********************\n";
                 resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
             
             return resultat;
-
         }
 
 
@@ -139,7 +172,7 @@ namespace spil
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "10 *  " + GameBoard2[0, 9] + "  *  " + GameBoard2[1, 9] + "  *  " + GameBoard2[2, 9] + "  *  " + GameBoard2[3, 9] + "  *  " + GameBoard2[4, 9] + "  *  " + GameBoard2[5, 9] + "  *  " + GameBoard2[6, 9] + "  *  " + GameBoard2[7, 9] + "  *  " + GameBoard2[8, 9] + "  *  " + GameBoard2[9, 9] + "  *  " + " \n";
+            resultat = resultat + "10*  " + GameBoard2[0, 9] + "  *  " + GameBoard2[1, 9] + "  *  " + GameBoard2[2, 9] + "  *  " + GameBoard2[3, 9] + "  *  " + GameBoard2[4, 9] + "  *  " + GameBoard2[5, 9] + "  *  " + GameBoard2[6, 9] + "  *  " + GameBoard2[7, 9] + "  *  " + GameBoard2[8, 9] + "  *  " + GameBoard2[9, 9] + "  *  " + " \n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
@@ -177,7 +210,7 @@ namespace spil
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "1 *  " + GameBoard2[0, 0] + "  *  " + GameBoard2[1, 0] + "  *  " + GameBoard2[2, 0] + "  *  " + GameBoard2[3, 0] + "  *  " + GameBoard2[4, 0] + "  *  " + GameBoard2[5, 0] + "  *  " + GameBoard2[6, 0] + "  *  " + GameBoard2[7, 0] + "  *  " + GameBoard2[8, 0] + "  *  " + GameBoard2[9, 0] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  ******************(Spiller 2 skibsboard)*********************\n";
             resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
 
             return resultat;
@@ -189,7 +222,7 @@ namespace spil
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "10 *  " + GameBoard3[0, 9] + "  *  " + GameBoard3[1, 9] + "  *  " + GameBoard3[2, 9] + "  *  " + GameBoard3[3, 9] + "  *  " + GameBoard3[4, 9] + "  *  " + GameBoard3[5, 9] + "  *  " + GameBoard3[6, 9] + "  *  " + GameBoard3[7, 9] + "  *  " + GameBoard3[8, 9] + "  *  " + GameBoard3[9, 9] + "  *  " + "  *\n";
+            resultat = resultat + "10*  " + GameBoard3[0, 9] + "  *  " + GameBoard3[1, 9] + "  *  " + GameBoard3[2, 9] + "  *  " + GameBoard3[3, 9] + "  *  " + GameBoard3[4, 9] + "  *  " + GameBoard3[5, 9] + "  *  " + GameBoard3[6, 9] + "  *  " + GameBoard3[7, 9] + "  *  " + GameBoard3[8, 9] + "  *  " + GameBoard3[9, 9] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
@@ -227,7 +260,7 @@ namespace spil
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "1 *  " + GameBoard3[0, 0] + "  *  " + GameBoard3[1, 0] + "  *  " + GameBoard3[2, 0] + "  *  " + GameBoard3[3, 0] + "  *  " + GameBoard3[4, 0] + "  *  " + GameBoard3[5, 0] + "  *  " + GameBoard3[6, 0] + "  *  " + GameBoard3[7, 0] + "  *  " + GameBoard3[8, 0] + "  *  " + GameBoard3[9, 0] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  ******************(Spiller 1 skydeboard)*********************\n";
             resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
 
             return resultat;
@@ -239,7 +272,7 @@ namespace spil
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "10 *  " + GameBoard4[0, 9] + "  *  " + GameBoard4[1, 9] + "  *  " + GameBoard4[2, 9] + "  *  " + GameBoard4[3, 9] + "  *  " + GameBoard4[4, 9] + "  *  " + GameBoard4[5, 9] + "  *  " + GameBoard4[6, 9] + "  *  " + GameBoard4[7, 9] + "  *  " + GameBoard4[8, 9] + "  *  " + GameBoard4[9, 9] + "  *  " + "  *\n";
+            resultat = resultat + "10*  " + GameBoard4[0, 9] + "  *  " + GameBoard4[1, 9] + "  *  " + GameBoard4[2, 9] + "  *  " + GameBoard4[3, 9] + "  *  " + GameBoard4[4, 9] + "  *  " + GameBoard4[5, 9] + "  *  " + GameBoard4[6, 9] + "  *  " + GameBoard4[7, 9] + "  *  " + GameBoard4[8, 9] + "  *  " + GameBoard4[9, 9] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
@@ -277,20 +310,27 @@ namespace spil
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "1 *  " + GameBoard4[0, 0] + "  *  " + GameBoard4[1, 0] + "  *  " + GameBoard4[2, 0] + "  *  " + GameBoard4[3, 0] + "  *  " + GameBoard4[4, 0] + "  *  " + GameBoard4[5, 0] + "  *  " + GameBoard4[6, 0] + "  *  " + GameBoard4[7, 0] + "  *  " + GameBoard4[8, 0] + "  *  " + GameBoard4[9, 0] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  ******************(Spiller 2 skydeboard)*********************\n";
             resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
 
             return resultat;
         }
 
         
+        public string ValidateSunk()
+        {
+            string resultat = "";
 
+
+
+            return resultat;
+        }
 
         public string Validate()
         {
             
             int checkaltx = 9;
-            string skibenavne = "HSDUP";
+            string skibenavne = "HBDUP";
             
             
             while (checkaltx >= 0)
@@ -298,7 +338,10 @@ namespace spil
                 
                 for (int a = 0; a < 10; a++) { 
                 int checkalty = a;
-                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 /*&& GameBoard2[checkaltx, checkalty] != ' '*/|| skibenavne.IndexOf(GameBoard1[checkaltx, checkalty]) > -1)
+
+                    //Jeg tror det er her at der opstår problemer der er ||
+
+                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 || skibenavne.IndexOf(GameBoard1[checkaltx, checkalty]) > -1)
                     {
                         winnerstring = "";
                         break;
@@ -422,6 +465,7 @@ namespace spil
                 }
             }
 
+            
 
             string Success = "";
             bool Collision = false;
@@ -467,6 +511,7 @@ namespace spil
                         if (Spiller == 1)
                         {
                             GameBoard1[x + i - 1, y - 1] = c;
+                            
                         }
                         else
                         {
