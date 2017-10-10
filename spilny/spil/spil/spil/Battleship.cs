@@ -526,8 +526,16 @@ namespace spil
                     Success = "Fejl";
                 }
 
-            }   
+            }
 
+            if (f == 1)
+            {
+                Console.WriteLine(GetGameBoardView1());
+            }
+            else
+            {
+                Console.WriteLine(GetGameBoardView2());
+            }
             return Success;
 
         }
