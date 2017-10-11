@@ -448,7 +448,7 @@ namespace spil
             
         }
 
-        internal string SætSkib(int d, char c, int f)
+        internal string SætSkib(int d, char c, int f, int b)
         {
 
             //Sætter x og y
@@ -461,6 +461,8 @@ namespace spil
             int y = Convert.ToInt32(Console.ReadLine());
 
             bool Collision = false;
+
+            
 
             //Rotation
 
@@ -493,15 +495,28 @@ namespace spil
             }
 
             string Success = "";
-           
+
+            //int ShipHidden = b.ToString();
+
+            int ShipHidden = b;
+            char ShipHiddenChar = ' ';
+
+            if(ShipHidden == 9) { ShipHiddenChar = '9';}
+            if (ShipHidden == 8) { ShipHiddenChar = '8'; }
+            if (ShipHidden == 7) { ShipHiddenChar = '7'; }
+            if (ShipHidden == 6) { ShipHiddenChar = '6'; }
+            if (ShipHidden == 5) { ShipHiddenChar = '5'; }
+            if (ShipHidden == 4) { ShipHiddenChar = '4'; }
+            if (ShipHidden == 3) { ShipHiddenChar = '3'; }
+            if (ShipHidden == 2) { ShipHiddenChar = '2'; }
+            if (ShipHidden == 1) { ShipHiddenChar = '1'; }
+
 
 
             //d = SLength || type
             //c = skibstype (D || H)
             int Spiller = f;
             //hvis man vil lave flere spillere skal man ændre if(spiller == )
-
-            //Lav en forløkke som tester for fejl
 
             //y = ja rotation, n = nej rotation
             if (Rotation == "n")
@@ -536,11 +551,12 @@ namespace spil
                         if (Spiller == 1)
                         {
                             GameBoard1[x + i - 1, y - 1] = c;
-                            
+                            GameBoardHidden1[x + i - 1, y - 1] = ShipHiddenChar;
                         }
                         else
                         {
                             GameBoard2[x + i - 1, y - 1] = c;
+                            GameBoardHidden2[x + i - 1, y - 1] = ShipHiddenChar;
                         }
                     }
 
@@ -582,10 +598,12 @@ namespace spil
                         if (Spiller == 1)
                         {
                             GameBoard1[x - 1, y + i - 1] = c;
+                            GameBoardHidden1[x - 1, y + i - 1] = ShipHiddenChar;
                         }
                         else
                         {
                             GameBoard2[x - 1, y + i - 1] = c;
+                            GameBoardHidden2[x - 1, y + i - 1] = ShipHiddenChar;
                         }
                     }
 

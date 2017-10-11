@@ -131,6 +131,8 @@ namespace spil
                 int NumUbåd = 0;
                 int NumPatruljeBåd = 1;
 
+                int NumHiddenShips = 9;
+
                 if (PuttingShipPlayer == 1)
                 {
                     Console.WriteLine(battleship.GetGameBoardView1());
@@ -150,9 +152,10 @@ namespace spil
                     
 
                     //Løst problemet med grænser ved at sætte afgrænsninger.
-                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
                         NumHangar--;
+                        NumHiddenShips--;
                     }
                     else
                     {
@@ -169,9 +172,10 @@ namespace spil
                     ShipLength = 4;
                     ShipName = 'B';
 
-                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
                         NumBattleShip--;
+                        NumHiddenShips--;
                     }
                     else
                     {
@@ -187,10 +191,11 @@ namespace spil
                     ShipLength = 3;
                     ShipName = 'D';
 
-                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
 
                         NumDestroyer--;
+                        NumHiddenShips--;
                     }
                     else
                     {
@@ -208,9 +213,10 @@ namespace spil
                     ShipLength = 3;
                     ShipName = 'U';
 
-                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
                         NumUbåd--;
+                        NumHiddenShips--;
                     }
                     else
                     {
@@ -228,9 +234,10 @@ namespace spil
                     ShipLength = 2;
                     ShipName = 'P';
 
-                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
                         NumPatruljeBåd--;
+                        NumHiddenShips--;
                     }
                     else
                     {
