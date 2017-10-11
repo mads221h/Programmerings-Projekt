@@ -319,9 +319,27 @@ namespace spil
         
         public string ValidateSunk()
         {
+            //Vi mangler dette punkt
             string resultat = "";
 
+            int checkaltx1 = 9;
 
+            while (checkaltx1 >= 0)
+            {
+
+                for (int a = 0; a < 10; a++)
+                {
+                    int checkalty1 = a;
+
+
+                    if (GameBoard1[checkaltx1, checkalty1] == '9')
+                    {
+                        resultat = "Sunket";
+                    }
+                    
+                }
+                checkaltx1--;
+            }
 
             return resultat;
         }
@@ -496,23 +514,11 @@ namespace spil
 
             string Success = "";
 
-            //int ShipHidden = b.ToString();
+            char ShipHidden = (char)b;
 
-            int ShipHidden = b;
-            char ShipHiddenChar = ' ';
-
-            if(ShipHidden == 9) { ShipHiddenChar = '9';}
-            if (ShipHidden == 8) { ShipHiddenChar = '8'; }
-            if (ShipHidden == 7) { ShipHiddenChar = '7'; }
-            if (ShipHidden == 6) { ShipHiddenChar = '6'; }
-            if (ShipHidden == 5) { ShipHiddenChar = '5'; }
-            if (ShipHidden == 4) { ShipHiddenChar = '4'; }
-            if (ShipHidden == 3) { ShipHiddenChar = '3'; }
-            if (ShipHidden == 2) { ShipHiddenChar = '2'; }
-            if (ShipHidden == 1) { ShipHiddenChar = '1'; }
-
-
-
+            
+            //int ShipHidden = b;
+            
             //d = SLength || type
             //c = skibstype (D || H)
             int Spiller = f;
@@ -551,12 +557,12 @@ namespace spil
                         if (Spiller == 1)
                         {
                             GameBoard1[x + i - 1, y - 1] = c;
-                            GameBoardHidden1[x + i - 1, y - 1] = ShipHiddenChar;
+                            GameBoardHidden1[x + i - 1, y - 1] = ShipHidden;
                         }
                         else
                         {
                             GameBoard2[x + i - 1, y - 1] = c;
-                            GameBoardHidden2[x + i - 1, y - 1] = ShipHiddenChar;
+                            GameBoardHidden2[x + i - 1, y - 1] = ShipHidden;
                         }
                     }
 
@@ -598,12 +604,12 @@ namespace spil
                         if (Spiller == 1)
                         {
                             GameBoard1[x - 1, y + i - 1] = c;
-                            GameBoardHidden1[x - 1, y + i - 1] = ShipHiddenChar;
+                            GameBoardHidden1[x - 1, y + i - 1] = ShipHidden;
                         }
                         else
                         {
                             GameBoard2[x - 1, y + i - 1] = c;
-                            GameBoardHidden2[x - 1, y + i - 1] = ShipHiddenChar;
+                            GameBoardHidden2[x - 1, y + i - 1] = ShipHidden;
                         }
                     }
 

@@ -310,6 +310,12 @@ namespace spil
 
                         battleship.Skydbrik(x, y, tur);
 
+                        if(battleship.ValidateSunk() == "Sunket")
+                        {
+
+
+                        }
+
                         if (battleship.Validate() == "Winner")
                         {
 
