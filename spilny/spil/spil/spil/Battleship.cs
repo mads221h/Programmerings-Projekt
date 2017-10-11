@@ -8,7 +8,7 @@ namespace spil
 {
     public class Battleship
     {
-        public string winnerstring = " ";
+        
    
         //Skibe sætning
         public char[,] GameBoard1 { get; set; }
