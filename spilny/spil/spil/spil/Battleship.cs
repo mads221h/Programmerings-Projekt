@@ -328,39 +328,61 @@ namespace spil
 
         public string Validate()
         {
-            
-            int checkaltx = 9;
+
+
+            bool SkibFundet1 = false;
+            bool SkibFundet2 = false;
+
+            string WinnerFound = "";
             string skibenavne = "HBDUP";
-            
-            
-            while (checkaltx >= 0)
+
+            int checkaltx1 = 9;
+            int checkaltx2 = 9;
+
+
+            //Board 1
+            while (checkaltx1 >= 0)
             {
-                
-                for (int a = 0; a < 10; a++) { 
-                int checkalty = a;
 
-                    //Jeg tror det er her at der opstår problemer der er ||
+                for (int a = 0; a < 10; a++)
+                {
+                    int checkalty1 = a;
 
-                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 || skibenavne.IndexOf(GameBoard1[checkaltx, checkalty]) > -1)
+                    
+                    if (skibenavne.IndexOf(GameBoard1[checkaltx1, checkalty1]) > 1)
                     {
-                        winnerstring = "";
-                        break;
+                        SkibFundet1 = true;
                     }
-                    else 
+                }
+                checkaltx1--;
+            }
+
+            //Board 2
+            while (checkaltx2 >= 0)
+            {
+
+                for (int a = 0; a < 10; a++)
+                {
+                    int checkalty2 = a;
+
+                  
+                    if (skibenavne.IndexOf(GameBoard2[checkaltx2, checkalty2]) > 1)
                     {
-                        winnerstring = "Winner";
-                        
+                        SkibFundet2 = true;
                     }
+                }
+                checkaltx2--;
             }
-                    checkaltx--;
+
+            if (!SkibFundet1 || !SkibFundet2)
+            {
+                WinnerFound = "Winner";
             }
-            return winnerstring;
-            
 
-
+            return WinnerFound;
         }
 
-        
+
         internal void Skydbrik(int x, int y, char tur)
         {
             //Spiller 1 = gameboard 1 && 3
@@ -370,6 +392,7 @@ namespace spil
             //char[] skibe = { 'H', 'D', 'P', 'U', 'B' };
             // skibe.Contains(GameBoard2[x - 1, y - 1])
             
+
 
             if (tur == '1')
             {

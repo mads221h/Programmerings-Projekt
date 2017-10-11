@@ -129,7 +129,7 @@ namespace spil
                 int NumBattleShip = 0;
                 int NumDestroyer = 0;
                 int NumUbåd = 0;
-                int NumPatruljeBåd = 2;
+                int NumPatruljeBåd = 1;
 
                 if (PuttingShipPlayer == 1)
                 {
@@ -159,7 +159,6 @@ namespace spil
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
                 }
 
                 //Battleship.
@@ -304,11 +303,7 @@ namespace spil
 
                         battleship.Skydbrik(x, y, tur);
 
-                        battleship.Validate();
-
-
-
-                        if (battleship.winnerstring == "Winner")
+                        if (battleship.Validate() == "Winner")
                         {
 
                             if (!Spiller1)
