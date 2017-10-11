@@ -437,6 +437,8 @@ namespace spil
 
             int y = Convert.ToInt32(Console.ReadLine());
 
+            bool Collision = false;
+
             //Rotation
 
             string Rotation = "";
@@ -447,13 +449,13 @@ namespace spil
 
                 string RotationTemp = Console.ReadLine();
 
-                if (RotationTemp == "y")
+                if (RotationTemp == "y" && y <= 11 - d)
                 {
                     Rotation = "y";
 
                     break;
                 }
-                else if (RotationTemp == "n")
+                else if (RotationTemp == "n" && x <= 11 - d)
                 {
 
                     Rotation = "n";
@@ -461,14 +463,14 @@ namespace spil
                 }
                 else
                 {
-                    Console.WriteLine("Ugyldigt valg, prøv igen");
+                    //Console.WriteLine("Ugyldig rotation, prøv igen");
+                    Collision = true;
+                    break;
                 }
             }
 
-            
-
             string Success = "";
-            bool Collision = false;
+           
 
 
             //d = SLength || type
@@ -482,7 +484,7 @@ namespace spil
             if (Rotation == "n")
             {
                 //sætter -1 ved d da løkken laver skibene et tak for langt.
-                if (x <= 10 - d && y <= 10)
+                if (x <= 11 - d && y <= 10)
                 {
 
                     for (int i = 0; i <= d - 1; i = i + 1)
@@ -504,7 +506,7 @@ namespace spil
                     }
                 }
 
-                if (x <= 10 - d && y <= 10 && !Collision)
+                if (x <= 11 - d && y <= 10 && !Collision)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
@@ -529,7 +531,7 @@ namespace spil
             else
             {
         //Rotation
-                if (x <= 10 - d && y <= 10)
+                if (x <= 10 && y <= 11 - d)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
@@ -550,7 +552,7 @@ namespace spil
                     }
                 }
 
-                if (x <= 10 - d && y <= 10 && !Collision)
+                if (x <= 10 && y <= 11 && !Collision)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {

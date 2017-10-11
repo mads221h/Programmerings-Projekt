@@ -125,7 +125,7 @@ namespace spil
                 //int NumPatruljeBåd = 3;
 
                 //Alternativ for test
-                int NumHangar = 0;
+                int NumHangar = 1;
                 int NumBattleShip = 0;
                 int NumDestroyer = 0;
                 int NumUbåd = 0;
@@ -237,6 +237,7 @@ namespace spil
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
+                       
                     }
                 }
                 Console.Clear();
