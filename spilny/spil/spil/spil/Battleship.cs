@@ -485,8 +485,7 @@ namespace spil
             //Rotation
 
             string Rotation = "";
-            while (true)
-            {
+           
 
                 Console.WriteLine("Roter? y = vertikalt / n = Horizontalt");
 
@@ -496,21 +495,21 @@ namespace spil
                 {
                     Rotation = "y";
 
-                    break;
+                    
                 }
                 else if (RotationTemp == "n" && x <= 11 - d)
                 {
 
                     Rotation = "n";
-                    break;
+                    
                 }
                 else
                 {
                     //Console.WriteLine("Ugyldig rotation, prøv igen");
                     Collision = true;
-                    break;
+                    
                 }
-            }
+            
 
             string Success = "";
 
@@ -524,25 +523,39 @@ namespace spil
             int Spiller = f;
             //hvis man vil lave flere spillere skal man ændre if(spiller == )
 
+            int NulRotation = 0;
+            int JaRotation = 0;
+
             //y = ja rotation, n = nej rotation
-            if (Rotation == "n")
-            {
+            
                 //sætter -1 ved d da løkken laver skibene et tak for langt.
                 if (x <= 11 - d && y <= 10)
                 {
 
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        if (Spiller == 1)
+                        //intern rotation
+                        if (Rotation == "n")
                         {
-                            if (GameBoard1[x + i - 1, y - 1] != ' ')
+                            NulRotation = i;
+                            JaRotation = 0;
+                        }
+                        else
+                        {
+                            NulRotation = 0;
+                            JaRotation = i;
+                        }
+
+                            if (Spiller == 1)
+                            {
+                            if (GameBoard1[x + NulRotation - 1, y + JaRotation - 1] != ' ')
                             {
                                 Collision = true;
                             }
                         }
                         else
                         {
-                            if (GameBoard2[x + i - 1, y - 1] != ' ')
+                            if (GameBoard2[x + NulRotation - 1, y + JaRotation - 1] != ' ')
                             {
                                 Collision = true;
                             }
@@ -554,15 +567,27 @@ namespace spil
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        if (Spiller == 1)
+                        //intern rotation
+                        if (Rotation == "n")
                         {
-                            GameBoard1[x + i - 1, y - 1] = c;
-                            GameBoardHidden1[x + i - 1, y - 1] = ShipHidden;
+                            NulRotation = i;
+                            JaRotation = 0;
                         }
                         else
                         {
-                            GameBoard2[x + i - 1, y - 1] = c;
-                            GameBoardHidden2[x + i - 1, y - 1] = ShipHidden;
+                            NulRotation = 0;
+                            JaRotation = i;
+                        }
+
+                        if (Spiller == 1)
+                        {
+                            GameBoard1[x + NulRotation - 1, y + JaRotation - 1] = c;
+                            GameBoardHidden1[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
+                        }
+                        else
+                        {
+                            GameBoard2[x + NulRotation - 1, y + JaRotation - 1] = c;
+                            GameBoardHidden2[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
                         }
                     }
 
@@ -572,55 +597,7 @@ namespace spil
                 {
                     Success = "Fejl";
                 }
-            }
-            else
-            {
-        //Rotation
-                if (x <= 10 && y <= 11 - d)
-                {
-                    for (int i = 0; i <= d - 1; i = i + 1)
-                    {
-                        if (Spiller == 1)
-                        {
-                            if (GameBoard1[x - 1, y + i - 1] != ' ')
-                            {
-                                Collision = true;
-                            }
-                        }
-                        else
-                        {
-                            if (GameBoard2[x - 1, y + i - 1] != ' ')
-                            {
-                                Collision = true;
-                            }
-                        }
-                    }
-                }
-
-                if (x <= 10 && y <= 11 && !Collision)
-                {
-                    for (int i = 0; i <= d - 1; i = i + 1)
-                    {
-                        if (Spiller == 1)
-                        {
-                            GameBoard1[x - 1, y + i - 1] = c;
-                            GameBoardHidden1[x - 1, y + i - 1] = ShipHidden;
-                        }
-                        else
-                        {
-                            GameBoard2[x - 1, y + i - 1] = c;
-                            GameBoardHidden2[x - 1, y + i - 1] = ShipHidden;
-                        }
-                    }
-
-                    Success = "Correct";
-                }
-                else
-                {
-                    Success = "Fejl";
-                }
-
-            }
+            
 
             if (f == 1)
             {

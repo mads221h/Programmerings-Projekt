@@ -129,7 +129,7 @@ namespace spil
                 int NumBattleShip = 0;
                 int NumDestroyer = 0;
                 int NumUbåd = 0;
-                int NumPatruljeBåd = 1;
+                int NumPatruljeBåd = 2;
 
                 int NumHiddenShips = 9;
 
