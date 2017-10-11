@@ -125,7 +125,7 @@ namespace spil
                 //int NumPatruljeBåd = 3;
 
                 //Alternativ for test
-                int NumHangar = 1;
+                int NumHangar = 0;
                 int NumBattleShip = 0;
                 int NumDestroyer = 0;
                 int NumUbåd = 0;
