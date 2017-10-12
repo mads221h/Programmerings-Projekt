@@ -8,6 +8,12 @@ namespace spil
 {
     class BattleshipMenu
     {
+
+        //spiller = hvis tur det er under skyde fasen.
+        bool Spiller1 = false;
+        //bool PlaceringAfSkibe = true;
+        bool PuttingShip = false;
+
         
 
         Battleship battleship { get; set; }
@@ -34,9 +40,29 @@ namespace spil
         {
             Console.Clear();
             Console.Clear();
-            if (battleship != null)
+
+            if (battleship != null )
             {
-                Console.WriteLine(battleship.GetGameBoardView2());
+                
+
+                if (!Spiller1 && PuttingShip)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView1());
+                    Console.WriteLine("Kamp fase! Spiller 1 skyd fjenden.");
+                }
+                else if(Spiller1 && PuttingShip)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView2());
+                    Console.WriteLine("Kamp fase! Spiller 2 skyd fjenden.");
+
+                }
+                else if(!PuttingShip)
+                {
+                    Console.WriteLine("Setup fase! Placer jeres skibe!");
+                }
+                
+                //imellem spillere
+
             }
 
             Console.WriteLine("Battleship");
@@ -63,337 +89,161 @@ namespace spil
 
         private void DoActionFor1()
         {
-            battleship = new Battleship();
+            //Jeg blev træt af at klikke 1 med et uheld.
+            Console.WriteLine("Er du sikker på du vil starte nyt spil? y for ja");
+            if (Console.ReadLine() == "y")
+            {
+                battleship = new Battleship();
+                PuttingShip = false;
+            }
+
 
         }
         private void DoActionFor2()
         {
-
             int ShipLength = 0;
             char ShipName = ' ';
 
             
-            int NumHangar = 1;
-            int NumBattleShip = 2;
-            int NumDestroyer = 2;
-            int NumUbåd = 1;
-            int NumPatruljeBåd = 3;
 
-            string Rotation = "";
+            int PuttingShipPlayer = 1;
 
-            //Skibslængden skal være 1 mindre.
-
-            bool PuttingShip = false;
-
-            //ændre til 1 Husk mig!
-            int PuttingShipPlayer = 2;
-
-            //går igennem 2 gange: vi skal lave en værdi som stiger til 2
-
+            //Kan ikke sætte flere skibe
+            if (PuttingShip)
+            {
+                Console.WriteLine("Kan ikke sætte flere skibe, skyd");
+                Console.ReadLine();
+            }
             //PuttingShipPlayer = 1 -> spiller 1, det samme for 2 -> spiller 2.
 
             while (!PuttingShip)
             {
+                //int NumHangar = 1;
+                //int NumBattleShip = 2;
+                //int NumDestroyer = 2;
+                //int NumUbåd = 1;
+                //int NumPatruljeBåd = 3;
+
+                //Alternativ for test
+                int NumHangar = 0;
+                int NumBattleShip = 0;
+                int NumDestroyer = 1;
+                int NumUbåd = 0;
+                int NumPatruljeBåd = 2;
+
+                int NumHiddenShips = 9;
+
+                if (PuttingShipPlayer == 1)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView1());
+                }
+                else
+                {
+                    Console.WriteLine(battleship.GetGameBoardView2());
+                }
+
                 //hangership
                 while (NumHangar > 0)
                 {
-
                     Console.WriteLine("Du har " + NumHangar + " Hangarskibe tilbage");
-
-                    Console.WriteLine("Indtast x-coordinaten");
-
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Indtast y-coordinat");
-
-                    int y = Convert.ToInt32(Console.ReadLine());
-
-                    while (true)
-                    {
-
-                        Console.WriteLine("Roter? y/n");
-
-                        string RotationTemp = Console.ReadLine();
-
-                        if(RotationTemp == "y")
-                        {
-                            Rotation = "y";
-
-                            break;
-                        }else if(RotationTemp == "n")
-                            {
-
-                            Rotation = "n";
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ugyldigt valg, prøv igen");
-                        }
-
-                    }
 
                     ShipLength = 5;
                     ShipName = 'H';
+                    
 
                     //Løst problemet med grænser ved at sætte afgrænsninger.
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
-
                         NumHangar--;
+                        NumHiddenShips--;
                     }
                     else
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-
-
                 }
-
 
                 //Battleship.
                 while (NumBattleShip > 0)
                 {
                     Console.WriteLine("Du har " + NumBattleShip + " slagskibe tilbage");
 
-                    Console.WriteLine("Indtast x-coordinaten");
-
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Indtast y-coordinat");
-
-                    int y = Convert.ToInt32(Console.ReadLine());
-
-                    while (true)
-                    {
-
-                        Console.WriteLine("Roter? y/n");
-
-                        string RotationTemp = Console.ReadLine();
-
-                        if (RotationTemp == "y")
-                        {
-                            Rotation = "y";
-
-                            break;
-                        }
-                        else if (RotationTemp == "n")
-                        {
-
-                            Rotation = "n";
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ugyldigt valg, prøv igen");
-                        }
-
-                    }
-
                     ShipLength = 4;
                     ShipName = 'B';
 
-
-                    
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
-
                         NumBattleShip--;
+                        NumHiddenShips--;
                     }
                     else
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
-
-
                 }
                 //Destroyer.
                 while (NumDestroyer > 0)
                 {
                     Console.WriteLine("Du har " + NumDestroyer + " destroyer tilbage");
 
-                    Console.WriteLine("Indtast x-coordinaten");
-
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Indtast y-coordinat");
-
-                    int y = Convert.ToInt32(Console.ReadLine());
-
-                    while (true)
-                    {
-
-                        Console.WriteLine("Roter? y/n");
-
-                        string RotationTemp = Console.ReadLine();
-
-                        if (RotationTemp == "y")
-                        {
-                            Rotation = "y";
-
-                            break;
-                        }
-                        else if (RotationTemp == "n")
-                        {
-
-                            Rotation = "n";
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ugyldigt valg, prøv igen");
-                        }
-
-                    }
-
                     ShipLength = 3;
                     ShipName = 'D';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
 
                         NumDestroyer--;
+                        NumHiddenShips--;
                     }
                     else
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
-
-
                 }
 
-                //Destroyer.
+                //Ubåd
                 while (NumUbåd > 0)
                 {
                     Console.WriteLine("Du har " + NumUbåd + " ubåd tilbage");
 
-                    Console.WriteLine("Indtast x-coordinaten");
-
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Indtast y-coordinat");
-
-                    int y = Convert.ToInt32(Console.ReadLine());
-
-                    while (true)
-                    {
-
-                        Console.WriteLine("Roter? y/n");
-
-                        string RotationTemp = Console.ReadLine();
-
-                        if (RotationTemp == "y")
-                        {
-                            Rotation = "y";
-
-                            break;
-                        }
-                        else if (RotationTemp == "n")
-                        {
-
-                            Rotation = "n";
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ugyldigt valg, prøv igen");
-                        }
-
-                    }
-
                     ShipLength = 3;
                     ShipName = 'U';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
-
                         NumUbåd--;
+                        NumHiddenShips--;
                     }
                     else
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
-
-                    Console.WriteLine(battleship.GetGameBoardView2());
-                    
-
-
                 }
-
-                //Destroyer.
+                //patruljebåd
                 while (NumPatruljeBåd > 0)
                 {
                     Console.WriteLine("Du har " + NumPatruljeBåd + " patruljebåd tilbage");
 
-                    Console.WriteLine("Indtast x-coordinaten");
-
-                    int x = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Indtast y-coordinat");
-
-                    int y = Convert.ToInt32(Console.ReadLine());
-
-                    while (true)
-                    {
-
-                        Console.WriteLine("Roter? y/n");
-
-                        string RotationTemp = Console.ReadLine();
-
-                        if (RotationTemp == "y")
-                        {
-                            Rotation = "y";
-
-                            break;
-                        }
-                        else if (RotationTemp == "n")
-                        {
-
-                            Rotation = "n";
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ugyldigt valg, prøv igen");
-                        }
-
-                    }
-
                     ShipLength = 2;
                     ShipName = 'P';
 
-                    if (battleship.SætSkib(x, y, ShipLength, ShipName, Rotation) == "Correct")
+                    if (battleship.SætSkib(ShipLength, ShipName, PuttingShipPlayer, NumHiddenShips) == "Correct")
                     {
-                        battleship.SætSkib(x, y, ShipLength, ShipName, Rotation);
-
                         NumPatruljeBåd--;
+                        NumHiddenShips--;
                     }
                     else
                     {
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
+                       
                     }
-                    Console.WriteLine(battleship.GetGameBoardView2());
                 }
+                Console.Clear();
 
                 //Spiller valg
                 PuttingShipPlayer++;
@@ -401,37 +251,113 @@ namespace spil
                 {
                     PuttingShip = true;
                 }
+
             }
         }
 
-
         private void DoActionFor3()
         {
-            
-        int spilletur = 1;
-            char tur;
-            if (spilletur == 0)
+            //int spilletur = 1;
+
+            if (PuttingShip)
             {
-                tur = '1';
-            }
-            else if (spilletur == 1)
-            {
-                tur = '2';
+                if (Spiller1 == false)
+                {
+                    Console.WriteLine(battleship.GetGameBoardView1());
+                    Console.WriteLine(battleship.GetGameBoardView3());
+                }
+                else
+                {
+                    Console.WriteLine(battleship.GetGameBoardView2());
+                    Console.WriteLine(battleship.GetGameBoardView4());
+                }
+
+                char tur;
+
+                //Denne while løkke bliver ved med at køre indtil man bruger break; da vi forventer korrekt valg.
+                while (true)
+                {
+                    //den skal bruge til at tjekke om der er blevet sunket et skib
+                    bool SunketStatus = false;
+
+                    Console.Clear();
+
+                    if (Spiller1 == false)
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView1());
+                        Console.WriteLine(battleship.GetGameBoardView3());
+                        tur = '1';
+                    }
+                    else
+                    {
+                        Console.WriteLine(battleship.GetGameBoardView2());
+                        Console.WriteLine(battleship.GetGameBoardView4());
+                        tur = '2';
+                    }
+
+                    Console.WriteLine("Player " + tur);
+                    Console.WriteLine("vælg x cordinaterne");
+
+                    int x = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("vælg y cordinaterne");
+                    int y = Convert.ToInt32(Console.ReadLine());
+
+                    if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
+                    {
+                        if (battleship.ValidateSunk(x, y, tur) == "Sunket")
+                        {
+                            SunketStatus = true;
+                        }
+
+                        battleship.Skydbrik(x, y, tur);
+
+                        if (SunketStatus)
+                        {
+                            Console.WriteLine("Skib Sunket");
+                            Console.ReadLine();
+                        }
+
+                        if (battleship.Validate() == "Winner")
+                        {
+
+                            if (!Spiller1)
+                            {
+                                Console.WriteLine("Spiller 1 har vundet");
+                                Console.ReadLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Spiller 2 har vundet");
+                                Console.ReadLine();
+                            }
+
+                            battleship = new Battleship();
+                            PuttingShip = false;
+                        }
+
+                        if (Spiller1)
+                        {
+                            Spiller1 = false;
+                        }
+                        else if (!Spiller1)
+                        {
+                            Spiller1 = true;
+                        }
+
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ugyldigt valg, skyd inden for boarded");
+                        Console.ReadLine();
+                    }
+
+                }
+
             }
             else
             {
-                tur = '1';
-            }
-            Console.WriteLine("Player " + tur);
-            Console.WriteLine("vælg x cordinaterne");
-            int x = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("vælg y cordinaterne");
-            int y = Convert.ToInt32(Console.ReadLine());
-            battleship.Skydbrik(x, y, tur);
-            battleship.Validate();
-            if (battleship.winnerstring == "Winner")
-            {
-                Console.WriteLine("Spillet er slut");
+                Console.WriteLine("Placer skibe først!");
                 Console.ReadLine();
             }
 

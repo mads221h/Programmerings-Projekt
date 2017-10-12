@@ -17,3 +17,13 @@ C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\s
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.dll
 C:\Users\Mads\Desktop\Skoleting\Programmering\Programmerings Projekt\spil\spil\spil\Test\obj\Debug\Test.pdb
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\Test.dll
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\Test.pdb
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\spil.exe
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\spil.pdb
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\bin\Debug\spil.exe.config
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\obj\Debug\Test.dll
+C:\Users\Nicolai\Source\Repos\Programmerings-Projekt4\spilny\spil\spil\Test\obj\Debug\Test.pdb

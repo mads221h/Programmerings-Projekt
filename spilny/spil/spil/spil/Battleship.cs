@@ -8,54 +8,26 @@ namespace spil
 {
     public class Battleship
     {
-        public string winnerstring = " ";
+        
    
-
+        //Skibe sætning
         public char[,] GameBoard1 { get; set; }
 
         public char[,] GameBoard2 { get; set; }
-        public char[,] GameBoard3 { get; set; }
-        public char[,] GameBoard4 { get; set; }
-        public char[,] GameBoards { get; set; }
 
-        public char[,] skydeBoards { get; set; }
+        //Skydeboards
+        public char[,] GameBoard3 { get; set; }
+
+        public char[,] GameBoard4 { get; set; }
+        
+        //Hidden boards for ship sinking
+        public char[,] GameBoardHidden1 { get; set; }
+
+        public char[,] GameBoardHidden2 { get; set; }
 
         public Battleship()
         {
-            int tur = 2;
-            if(tur == 1){
-                GameBoards = GameBoard1;
-                skydeBoards = GameBoard3;
-            }
-            else if (tur == 2)
-            {
-                GameBoards = GameBoard2;
-                skydeBoards = GameBoard4;
-            }
-            GameBoards = new char[10, 10] {
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-            };
-            skydeBoards = new char[10, 10] {
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-            };
+
             GameBoard1 = new char[10, 10] {
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -81,9 +53,8 @@ namespace spil
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-                
-
             };
+
             GameBoard3 = new char[10, 10] {
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -96,7 +67,34 @@ namespace spil
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
             };
+
             GameBoard4 = new char[10, 10] {
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+            };
+
+            GameBoardHidden1 = new char[10, 10] {
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+            };
+
+            GameBoardHidden2 = new char[10, 10] {
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -114,221 +112,527 @@ namespace spil
         }
         
 
-        //public string GetGameBoardView1()
-        //{
-        //    string resultat = "";
-        //    resultat = resultat + "Y\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "10 *  " + GameBoard1[0, 9] + "  *  " + GameBoard1[1, 9] + "  *  " + GameBoard1[2, 9] + "  *  " + GameBoard1[3, 9] + "  *  " + GameBoard1[4, 9] + "  *  " + GameBoard1[5, 9] + "  *  " + GameBoard1[6, 9] + "  *  " + GameBoard1[7, 9] + "  *  " + GameBoard1[8, 9] + "  *  " + GameBoard1[9, 9] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "9 *  " + GameBoard1[0, 8] + "  *  " + GameBoard1[1, 8] + "  *  " + GameBoard1[2, 8] + "  *  " + GameBoard1[3, 8] + "  *  " + GameBoard1[4, 8] + "  *  " + GameBoard1[5, 8] + "  *  " + GameBoard1[6, 8] + "  *  " + GameBoard1[7, 8] + "  *  " + GameBoard1[8, 8] + "  *  " + GameBoard1[9, 8] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "8 *  " + GameBoard1[0, 7] + "  *  " + GameBoard1[1, 7] + "  *  " + GameBoard1[2, 7] + "  *  " + GameBoard1[3, 7] + "  *  " + GameBoard1[4, 7] + "  *  " + GameBoard1[5, 7] + "  *  " + GameBoard1[6, 7] + "  *  " + GameBoard1[7, 7] + "  *  " + GameBoard1[8, 7] + "  *  " + GameBoard1[9, 7] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "7 *  " + GameBoard1[0, 6] + "  *  " + GameBoard1[1, 6] + "  *  " + GameBoard1[2, 6] + "  *  " + GameBoard1[3, 6] + "  *  " + GameBoard1[4, 6] + "  *  " + GameBoard1[5, 6] + "  *  " + GameBoard1[6, 6] + "  *  " + GameBoard1[7, 6] + "  *  " + GameBoard1[8, 6] + "  *  " + GameBoard1[9, 6] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "6 *  " + GameBoard1[0, 5] + "  *  " + GameBoard1[1, 5] + "  *  " + GameBoard1[2, 5] + "  *  " + GameBoard1[3, 5] + "  *  " + GameBoard1[4, 5] + "  *  " + GameBoard1[5, 5] + "  *  " + GameBoard1[6, 5] + "  *  " + GameBoard1[7, 5] + "  *  " + GameBoard1[8, 5] + "  *  " + GameBoard1[9, 5] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "5 *  " + GameBoard1[0, 4] + "  *  " + GameBoard1[1, 4] + "  *  " + GameBoard1[2, 4] + "  *  " + GameBoard1[3, 4] + "  *  " + GameBoard1[4, 4] + "  *  " + GameBoard1[5, 4] + "  *  " + GameBoard1[6, 4] + "  *  " + GameBoard1[7, 4] + "  *  " + GameBoard1[8, 4] + "  *  " + GameBoard1[9, 4] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "4 *  " + GameBoard1[0, 3] + "  *  " + GameBoard1[1, 3] + "  *  " + GameBoard1[2, 3] + "  *  " + GameBoard1[3, 3] + "  *  " + GameBoard1[4, 3] + "  *  " + GameBoard1[5, 3] + "  *  " + GameBoard1[6, 3] + "  *  " + GameBoard1[7, 3] + "  *  " + GameBoard1[8, 3] + "  *  " + GameBoard1[9, 3] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "3 *  " + GameBoard1[0, 2] + "  *  " + GameBoard1[1, 2] + "  *  " + GameBoard1[2, 2] + "  *  " + GameBoard1[3, 2] + "  *  " + GameBoard1[4, 2] + "  *  " + GameBoard1[5, 2] + "  *  " + GameBoard1[6, 2] + "  *  " + GameBoard1[7, 2] + "  *  " + GameBoard1[8, 2] + "  *  " + GameBoard1[9, 2] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "2 *  " + GameBoard1[0, 1] + "  *  " + GameBoard1[1, 1] + "  *  " + GameBoard1[2, 1] + "  *  " + GameBoard1[3, 1] + "  *  " + GameBoard1[4, 1] + "  *  " + GameBoard1[5, 1] + "  *  " + GameBoard1[6, 1] + "  *  " + GameBoard1[7, 1] + "  *  " + GameBoard1[8, 1] + "  *  " + GameBoard1[9, 1] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "1 *  " + GameBoard1[0, 0] + "  *  " + GameBoard1[1, 0] + "  *  " + GameBoard1[2, 0] + "  *  " + GameBoard1[3, 0] + "  *  " + GameBoard1[4, 0] + "  *  " + GameBoard1[5, 0] + "  *  " + GameBoard1[6, 0] + "  *  " + GameBoard1[7, 0] + "  *  " + GameBoard1[8, 0] + "  *  " + GameBoard1[9, 0] + "  *  " + "  *\n";
-        //    resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-        //    resultat = resultat + "  *************************************************************\n";
-        //    resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
+        public string GetGameBoardView1()
+        {
+           
 
-        //    return resultat;
-
-        //}
+                string resultat = "";
+                resultat = resultat + "Y\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "10*  " + GameBoard1[0, 9] + "  *  " + GameBoard1[1, 9] + "  *  " + GameBoard1[2, 9] + "  *  " + GameBoard1[3, 9] + "  *  " + GameBoard1[4, 9] + "  *  " + GameBoard1[5, 9] + "  *  " + GameBoard1[6, 9] + "  *  " + GameBoard1[7, 9] + "  *  " + GameBoard1[8, 9] + "  *  " + GameBoard1[9, 9] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "9 *  " + GameBoard1[0, 8] + "  *  " + GameBoard1[1, 8] + "  *  " + GameBoard1[2, 8] + "  *  " + GameBoard1[3, 8] + "  *  " + GameBoard1[4, 8] + "  *  " + GameBoard1[5, 8] + "  *  " + GameBoard1[6, 8] + "  *  " + GameBoard1[7, 8] + "  *  " + GameBoard1[8, 8] + "  *  " + GameBoard1[9, 8] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "8 *  " + GameBoard1[0, 7] + "  *  " + GameBoard1[1, 7] + "  *  " + GameBoard1[2, 7] + "  *  " + GameBoard1[3, 7] + "  *  " + GameBoard1[4, 7] + "  *  " + GameBoard1[5, 7] + "  *  " + GameBoard1[6, 7] + "  *  " + GameBoard1[7, 7] + "  *  " + GameBoard1[8, 7] + "  *  " + GameBoard1[9, 7] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "7 *  " + GameBoard1[0, 6] + "  *  " + GameBoard1[1, 6] + "  *  " + GameBoard1[2, 6] + "  *  " + GameBoard1[3, 6] + "  *  " + GameBoard1[4, 6] + "  *  " + GameBoard1[5, 6] + "  *  " + GameBoard1[6, 6] + "  *  " + GameBoard1[7, 6] + "  *  " + GameBoard1[8, 6] + "  *  " + GameBoard1[9, 6] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "6 *  " + GameBoard1[0, 5] + "  *  " + GameBoard1[1, 5] + "  *  " + GameBoard1[2, 5] + "  *  " + GameBoard1[3, 5] + "  *  " + GameBoard1[4, 5] + "  *  " + GameBoard1[5, 5] + "  *  " + GameBoard1[6, 5] + "  *  " + GameBoard1[7, 5] + "  *  " + GameBoard1[8, 5] + "  *  " + GameBoard1[9, 5] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "5 *  " + GameBoard1[0, 4] + "  *  " + GameBoard1[1, 4] + "  *  " + GameBoard1[2, 4] + "  *  " + GameBoard1[3, 4] + "  *  " + GameBoard1[4, 4] + "  *  " + GameBoard1[5, 4] + "  *  " + GameBoard1[6, 4] + "  *  " + GameBoard1[7, 4] + "  *  " + GameBoard1[8, 4] + "  *  " + GameBoard1[9, 4] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "4 *  " + GameBoard1[0, 3] + "  *  " + GameBoard1[1, 3] + "  *  " + GameBoard1[2, 3] + "  *  " + GameBoard1[3, 3] + "  *  " + GameBoard1[4, 3] + "  *  " + GameBoard1[5, 3] + "  *  " + GameBoard1[6, 3] + "  *  " + GameBoard1[7, 3] + "  *  " + GameBoard1[8, 3] + "  *  " + GameBoard1[9, 3] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "3 *  " + GameBoard1[0, 2] + "  *  " + GameBoard1[1, 2] + "  *  " + GameBoard1[2, 2] + "  *  " + GameBoard1[3, 2] + "  *  " + GameBoard1[4, 2] + "  *  " + GameBoard1[5, 2] + "  *  " + GameBoard1[6, 2] + "  *  " + GameBoard1[7, 2] + "  *  " + GameBoard1[8, 2] + "  *  " + GameBoard1[9, 2] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "2 *  " + GameBoard1[0, 1] + "  *  " + GameBoard1[1, 1] + "  *  " + GameBoard1[2, 1] + "  *  " + GameBoard1[3, 1] + "  *  " + GameBoard1[4, 1] + "  *  " + GameBoard1[5, 1] + "  *  " + GameBoard1[6, 1] + "  *  " + GameBoard1[7, 1] + "  *  " + GameBoard1[8, 1] + "  *  " + GameBoard1[9, 1] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  *************************************************************\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "1 *  " + GameBoard1[0, 0] + "  *  " + GameBoard1[1, 0] + "  *  " + GameBoard1[2, 0] + "  *  " + GameBoard1[3, 0] + "  *  " + GameBoard1[4, 0] + "  *  " + GameBoard1[5, 0] + "  *  " + GameBoard1[6, 0] + "  *  " + GameBoard1[7, 0] + "  *  " + GameBoard1[8, 0] + "  *  " + GameBoard1[9, 0] + "  *  " + "  *\n";
+                resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+                resultat = resultat + "  ******************(Spiller 1 skibsboard)*********************\n";
+                resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
+            
+            return resultat;
+        }
 
 
         public string GetGameBoardView2()
         {
-            
+
             string resultat = "";
             resultat = resultat + "Y\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "10 *  " + GameBoards[0, 9] + "  *  " + GameBoards[1, 9] + "  *  " + GameBoards[2, 9] + "  *  " + GameBoards[3, 9] + "  *  " + GameBoards[4, 9] + "  *  " + GameBoards[5, 9] + "  *  " + GameBoards[6, 9] + "  *  " + GameBoards[7, 9] + "  *  " + GameBoards[8, 9] + "  *  " + GameBoards[9, 9] + "  *  " + " \n";
+            resultat = resultat + "10*  " + GameBoard2[0, 9] + "  *  " + GameBoard2[1, 9] + "  *  " + GameBoard2[2, 9] + "  *  " + GameBoard2[3, 9] + "  *  " + GameBoard2[4, 9] + "  *  " + GameBoard2[5, 9] + "  *  " + GameBoard2[6, 9] + "  *  " + GameBoard2[7, 9] + "  *  " + GameBoard2[8, 9] + "  *  " + GameBoard2[9, 9] + "  *  " + " \n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "9 *  " + GameBoards[0, 8] + "  *  " + GameBoards[1, 8] + "  *  " + GameBoards[2, 8] + "  *  " + GameBoards[3, 8] + "  *  " + GameBoards[4, 8] + "  *  " + GameBoards[5, 8] + "  *  " + GameBoards[6, 8] + "  *  " + GameBoards[7, 8] + "  *  " + GameBoards[8, 8] + "  *  " + GameBoards[9, 8] + "  *  " + "  *\n";
+            resultat = resultat + "9 *  " + GameBoard2[0, 8] + "  *  " + GameBoard2[1, 8] + "  *  " + GameBoard2[2, 8] + "  *  " + GameBoard2[3, 8] + "  *  " + GameBoard2[4, 8] + "  *  " + GameBoard2[5, 8] + "  *  " + GameBoard2[6, 8] + "  *  " + GameBoard2[7, 8] + "  *  " + GameBoard2[8, 8] + "  *  " + GameBoard2[9, 8] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "8 *  " + GameBoards[0, 7] + "  *  " + GameBoards[1, 7] + "  *  " + GameBoards[2, 7] + "  *  " + GameBoards[3, 7] + "  *  " + GameBoards[4, 7] + "  *  " + GameBoards[5, 7] + "  *  " + GameBoards[6, 7] + "  *  " + GameBoards[7, 7] + "  *  " + GameBoards[8, 7] + "  *  " + GameBoards[9, 7] + "  *  " + "  *\n";
+            resultat = resultat + "8 *  " + GameBoard2[0, 7] + "  *  " + GameBoard2[1, 7] + "  *  " + GameBoard2[2, 7] + "  *  " + GameBoard2[3, 7] + "  *  " + GameBoard2[4, 7] + "  *  " + GameBoard2[5, 7] + "  *  " + GameBoard2[6, 7] + "  *  " + GameBoard2[7, 7] + "  *  " + GameBoard2[8, 7] + "  *  " + GameBoard2[9, 7] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "7 *  " + GameBoards[0, 6] + "  *  " + GameBoards[1, 6] + "  *  " + GameBoards[2, 6] + "  *  " + GameBoards[3, 6] + "  *  " + GameBoards[4, 6] + "  *  " + GameBoards[5, 6] + "  *  " + GameBoards[6, 6] + "  *  " + GameBoards[7, 6] + "  *  " + GameBoards[8, 6] + "  *  " + GameBoards[9, 6] + "  *  " + "  *\n";
+            resultat = resultat + "7 *  " + GameBoard2[0, 6] + "  *  " + GameBoard2[1, 6] + "  *  " + GameBoard2[2, 6] + "  *  " + GameBoard2[3, 6] + "  *  " + GameBoard2[4, 6] + "  *  " + GameBoard2[5, 6] + "  *  " + GameBoard2[6, 6] + "  *  " + GameBoard2[7, 6] + "  *  " + GameBoard2[8, 6] + "  *  " + GameBoard2[9, 6] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "6 *  " + GameBoards[0, 5] + "  *  " + GameBoards[1, 5] + "  *  " + GameBoards[2, 5] + "  *  " + GameBoards[3, 5] + "  *  " + GameBoards[4, 5] + "  *  " + GameBoards[5, 5] + "  *  " + GameBoards[6, 5] + "  *  " + GameBoards[7, 5] + "  *  " + GameBoards[8, 5] + "  *  " + GameBoards[9, 5] + "  *  " + "  *\n";
+            resultat = resultat + "6 *  " + GameBoard2[0, 5] + "  *  " + GameBoard2[1, 5] + "  *  " + GameBoard2[2, 5] + "  *  " + GameBoard2[3, 5] + "  *  " + GameBoard2[4, 5] + "  *  " + GameBoard2[5, 5] + "  *  " + GameBoard2[6, 5] + "  *  " + GameBoard2[7, 5] + "  *  " + GameBoard2[8, 5] + "  *  " + GameBoard2[9, 5] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "5 *  " + GameBoards[0, 4] + "  *  " + GameBoards[1, 4] + "  *  " + GameBoards[2, 4] + "  *  " + GameBoards[3, 4] + "  *  " + GameBoards[4, 4] + "  *  " + GameBoards[5, 4] + "  *  " + GameBoards[6, 4] + "  *  " + GameBoards[7, 4] + "  *  " + GameBoards[8, 4] + "  *  " + GameBoards[9, 4] + "  *  " + "  *\n";
+            resultat = resultat + "5 *  " + GameBoard2[0, 4] + "  *  " + GameBoard2[1, 4] + "  *  " + GameBoard2[2, 4] + "  *  " + GameBoard2[3, 4] + "  *  " + GameBoard2[4, 4] + "  *  " + GameBoard2[5, 4] + "  *  " + GameBoard2[6, 4] + "  *  " + GameBoard2[7, 4] + "  *  " + GameBoard2[8, 4] + "  *  " + GameBoard2[9, 4] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "4 *  " + GameBoards[0, 3] + "  *  " + GameBoards[1, 3] + "  *  " + GameBoards[2, 3] + "  *  " + GameBoards[3, 3] + "  *  " + GameBoards[4, 3] + "  *  " + GameBoards[5, 3] + "  *  " + GameBoards[6, 3] + "  *  " + GameBoards[7, 3] + "  *  " + GameBoards[8, 3] + "  *  " + GameBoards[9, 3] + "  *  " + "  *\n";
+            resultat = resultat + "4 *  " + GameBoard2[0, 3] + "  *  " + GameBoard2[1, 3] + "  *  " + GameBoard2[2, 3] + "  *  " + GameBoard2[3, 3] + "  *  " + GameBoard2[4, 3] + "  *  " + GameBoard2[5, 3] + "  *  " + GameBoard2[6, 3] + "  *  " + GameBoard2[7, 3] + "  *  " + GameBoard2[8, 3] + "  *  " + GameBoard2[9, 3] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "3 *  " + GameBoards[0, 2] + "  *  " + GameBoards[1, 2] + "  *  " + GameBoards[2, 2] + "  *  " + GameBoards[3, 2] + "  *  " + GameBoards[4, 2] + "  *  " + GameBoards[5, 2] + "  *  " + GameBoards[6, 2] + "  *  " + GameBoards[7, 2] + "  *  " + GameBoards[8, 2] + "  *  " + GameBoards[9, 2] + "  *  " + "  *\n";
+            resultat = resultat + "3 *  " + GameBoard2[0, 2] + "  *  " + GameBoard2[1, 2] + "  *  " + GameBoard2[2, 2] + "  *  " + GameBoard2[3, 2] + "  *  " + GameBoard2[4, 2] + "  *  " + GameBoard2[5, 2] + "  *  " + GameBoard2[6, 2] + "  *  " + GameBoard2[7, 2] + "  *  " + GameBoard2[8, 2] + "  *  " + GameBoard2[9, 2] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "2 *  " + GameBoards[0, 1] + "  *  " + GameBoards[1, 1] + "  *  " + GameBoards[2, 1] + "  *  " + GameBoards[3, 1] + "  *  " + GameBoards[4, 1] + "  *  " + GameBoards[5, 1] + "  *  " + GameBoards[6, 1] + "  *  " + GameBoards[7, 1] + "  *  " + GameBoards[8, 1] + "  *  " + GameBoards[9, 1] + "  *  " + "  *\n";
+            resultat = resultat + "2 *  " + GameBoard2[0, 1] + "  *  " + GameBoard2[1, 1] + "  *  " + GameBoard2[2, 1] + "  *  " + GameBoard2[3, 1] + "  *  " + GameBoard2[4, 1] + "  *  " + GameBoard2[5, 1] + "  *  " + GameBoard2[6, 1] + "  *  " + GameBoard2[7, 1] + "  *  " + GameBoard2[8, 1] + "  *  " + GameBoard2[9, 1] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
             resultat = resultat + "  *************************************************************\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "1 *  " + GameBoards[0, 0] + "  *  " + GameBoards[1, 0] + "  *  " + GameBoards[2, 0] + "  *  " + GameBoards[3, 0] + "  *  " + GameBoards[4, 0] + "  *  " + GameBoards[5, 0] + "  *  " + GameBoards[6, 0] + "  *  " + GameBoards[7, 0] + "  *  " + GameBoards[8, 0] + "  *  " + GameBoards[9, 0] + "  *  " + "  *\n";
+            resultat = resultat + "1 *  " + GameBoard2[0, 0] + "  *  " + GameBoard2[1, 0] + "  *  " + GameBoard2[2, 0] + "  *  " + GameBoard2[3, 0] + "  *  " + GameBoard2[4, 0] + "  *  " + GameBoard2[5, 0] + "  *  " + GameBoard2[6, 0] + "  *  " + GameBoard2[7, 0] + "  *  " + GameBoard2[8, 0] + "  *  " + GameBoard2[9, 0] + "  *  " + "  *\n";
             resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
-            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  ******************(Spiller 2 skibsboard)*********************\n";
             resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
+
+            return resultat;
+        }
+
+        public string GetGameBoardView3()
+        {
+            string resultat = "";
+            resultat = resultat + "Y\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "10*  " + GameBoard3[0, 9] + "  *  " + GameBoard3[1, 9] + "  *  " + GameBoard3[2, 9] + "  *  " + GameBoard3[3, 9] + "  *  " + GameBoard3[4, 9] + "  *  " + GameBoard3[5, 9] + "  *  " + GameBoard3[6, 9] + "  *  " + GameBoard3[7, 9] + "  *  " + GameBoard3[8, 9] + "  *  " + GameBoard3[9, 9] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "9 *  " + GameBoard3[0, 8] + "  *  " + GameBoard3[1, 8] + "  *  " + GameBoard3[2, 8] + "  *  " + GameBoard3[3, 8] + "  *  " + GameBoard3[4, 8] + "  *  " + GameBoard3[5, 8] + "  *  " + GameBoard3[6, 8] + "  *  " + GameBoard3[7, 8] + "  *  " + GameBoard3[8, 8] + "  *  " + GameBoard3[9, 8] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "8 *  " + GameBoard3[0, 7] + "  *  " + GameBoard3[1, 7] + "  *  " + GameBoard3[2, 7] + "  *  " + GameBoard3[3, 7] + "  *  " + GameBoard3[4, 7] + "  *  " + GameBoard3[5, 7] + "  *  " + GameBoard3[6, 7] + "  *  " + GameBoard3[7, 7] + "  *  " + GameBoard3[8, 7] + "  *  " + GameBoard3[9, 7] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "7 *  " + GameBoard3[0, 6] + "  *  " + GameBoard3[1, 6] + "  *  " + GameBoard3[2, 6] + "  *  " + GameBoard3[3, 6] + "  *  " + GameBoard3[4, 6] + "  *  " + GameBoard3[5, 6] + "  *  " + GameBoard3[6, 6] + "  *  " + GameBoard3[7, 6] + "  *  " + GameBoard3[8, 6] + "  *  " + GameBoard3[9, 6] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "6 *  " + GameBoard3[0, 5] + "  *  " + GameBoard3[1, 5] + "  *  " + GameBoard3[2, 5] + "  *  " + GameBoard3[3, 5] + "  *  " + GameBoard3[4, 5] + "  *  " + GameBoard3[5, 5] + "  *  " + GameBoard3[6, 5] + "  *  " + GameBoard3[7, 5] + "  *  " + GameBoard3[8, 5] + "  *  " + GameBoard3[9, 5] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "5 *  " + GameBoard3[0, 4] + "  *  " + GameBoard3[1, 4] + "  *  " + GameBoard3[2, 4] + "  *  " + GameBoard3[3, 4] + "  *  " + GameBoard3[4, 4] + "  *  " + GameBoard3[5, 4] + "  *  " + GameBoard3[6, 4] + "  *  " + GameBoard3[7, 4] + "  *  " + GameBoard3[8, 4] + "  *  " + GameBoard3[9, 4] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "4 *  " + GameBoard3[0, 3] + "  *  " + GameBoard3[1, 3] + "  *  " + GameBoard3[2, 3] + "  *  " + GameBoard3[3, 3] + "  *  " + GameBoard3[4, 3] + "  *  " + GameBoard3[5, 3] + "  *  " + GameBoard3[6, 3] + "  *  " + GameBoard3[7, 3] + "  *  " + GameBoard3[8, 3] + "  *  " + GameBoard3[9, 3] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "3 *  " + GameBoard3[0, 2] + "  *  " + GameBoard3[1, 2] + "  *  " + GameBoard3[2, 2] + "  *  " + GameBoard3[3, 2] + "  *  " + GameBoard3[4, 2] + "  *  " + GameBoard3[5, 2] + "  *  " + GameBoard3[6, 2] + "  *  " + GameBoard3[7, 2] + "  *  " + GameBoard3[8, 2] + "  *  " + GameBoard3[9, 2] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "2 *  " + GameBoard3[0, 1] + "  *  " + GameBoard3[1, 1] + "  *  " + GameBoard3[2, 1] + "  *  " + GameBoard3[3, 1] + "  *  " + GameBoard3[4, 1] + "  *  " + GameBoard3[5, 1] + "  *  " + GameBoard3[6, 1] + "  *  " + GameBoard3[7, 1] + "  *  " + GameBoard3[8, 1] + "  *  " + GameBoard3[9, 1] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "1 *  " + GameBoard3[0, 0] + "  *  " + GameBoard3[1, 0] + "  *  " + GameBoard3[2, 0] + "  *  " + GameBoard3[3, 0] + "  *  " + GameBoard3[4, 0] + "  *  " + GameBoard3[5, 0] + "  *  " + GameBoard3[6, 0] + "  *  " + GameBoard3[7, 0] + "  *  " + GameBoard3[8, 0] + "  *  " + GameBoard3[9, 0] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  ******************(Spiller 1 skydeboard)*********************\n";
+            resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
+
+            return resultat;
+        }
+
+        public string GetGameBoardView4()
+        {
+            string resultat = "";
+            resultat = resultat + "Y\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "10*  " + GameBoard4[0, 9] + "  *  " + GameBoard4[1, 9] + "  *  " + GameBoard4[2, 9] + "  *  " + GameBoard4[3, 9] + "  *  " + GameBoard4[4, 9] + "  *  " + GameBoard4[5, 9] + "  *  " + GameBoard4[6, 9] + "  *  " + GameBoard4[7, 9] + "  *  " + GameBoard4[8, 9] + "  *  " + GameBoard4[9, 9] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "9 *  " + GameBoard4[0, 8] + "  *  " + GameBoard4[1, 8] + "  *  " + GameBoard4[2, 8] + "  *  " + GameBoard4[3, 8] + "  *  " + GameBoard4[4, 8] + "  *  " + GameBoard4[5, 8] + "  *  " + GameBoard4[6, 8] + "  *  " + GameBoard4[7, 8] + "  *  " + GameBoard4[8, 8] + "  *  " + GameBoard4[9, 8] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "8 *  " + GameBoard4[0, 7] + "  *  " + GameBoard4[1, 7] + "  *  " + GameBoard4[2, 7] + "  *  " + GameBoard4[3, 7] + "  *  " + GameBoard4[4, 7] + "  *  " + GameBoard4[5, 7] + "  *  " + GameBoard4[6, 7] + "  *  " + GameBoard4[7, 7] + "  *  " + GameBoard4[8, 7] + "  *  " + GameBoard4[9, 7] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "7 *  " + GameBoard4[0, 6] + "  *  " + GameBoard4[1, 6] + "  *  " + GameBoard4[2, 6] + "  *  " + GameBoard4[3, 6] + "  *  " + GameBoard4[4, 6] + "  *  " + GameBoard4[5, 6] + "  *  " + GameBoard4[6, 6] + "  *  " + GameBoard4[7, 6] + "  *  " + GameBoard4[8, 6] + "  *  " + GameBoard4[9, 6] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "6 *  " + GameBoard4[0, 5] + "  *  " + GameBoard4[1, 5] + "  *  " + GameBoard4[2, 5] + "  *  " + GameBoard4[3, 5] + "  *  " + GameBoard4[4, 5] + "  *  " + GameBoard4[5, 5] + "  *  " + GameBoard4[6, 5] + "  *  " + GameBoard4[7, 5] + "  *  " + GameBoard4[8, 5] + "  *  " + GameBoard4[9, 5] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "5 *  " + GameBoard4[0, 4] + "  *  " + GameBoard4[1, 4] + "  *  " + GameBoard4[2, 4] + "  *  " + GameBoard4[3, 4] + "  *  " + GameBoard4[4, 4] + "  *  " + GameBoard4[5, 4] + "  *  " + GameBoard4[6, 4] + "  *  " + GameBoard4[7, 4] + "  *  " + GameBoard4[8, 4] + "  *  " + GameBoard4[9, 4] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "4 *  " + GameBoard4[0, 3] + "  *  " + GameBoard4[1, 3] + "  *  " + GameBoard4[2, 3] + "  *  " + GameBoard4[3, 3] + "  *  " + GameBoard4[4, 3] + "  *  " + GameBoard4[5, 3] + "  *  " + GameBoard4[6, 3] + "  *  " + GameBoard4[7, 3] + "  *  " + GameBoard4[8, 3] + "  *  " + GameBoard4[9, 3] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "3 *  " + GameBoard4[0, 2] + "  *  " + GameBoard4[1, 2] + "  *  " + GameBoard4[2, 2] + "  *  " + GameBoard4[3, 2] + "  *  " + GameBoard4[4, 2] + "  *  " + GameBoard4[5, 2] + "  *  " + GameBoard4[6, 2] + "  *  " + GameBoard4[7, 2] + "  *  " + GameBoard4[8, 2] + "  *  " + GameBoard4[9, 2] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "2 *  " + GameBoard4[0, 1] + "  *  " + GameBoard4[1, 1] + "  *  " + GameBoard4[2, 1] + "  *  " + GameBoard4[3, 1] + "  *  " + GameBoard4[4, 1] + "  *  " + GameBoard4[5, 1] + "  *  " + GameBoard4[6, 1] + "  *  " + GameBoard4[7, 1] + "  *  " + GameBoard4[8, 1] + "  *  " + GameBoard4[9, 1] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  *************************************************************\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "1 *  " + GameBoard4[0, 0] + "  *  " + GameBoard4[1, 0] + "  *  " + GameBoard4[2, 0] + "  *  " + GameBoard4[3, 0] + "  *  " + GameBoard4[4, 0] + "  *  " + GameBoard4[5, 0] + "  *  " + GameBoard4[6, 0] + "  *  " + GameBoard4[7, 0] + "  *  " + GameBoard4[8, 0] + "  *  " + GameBoard4[9, 0] + "  *  " + "  *\n";
+            resultat = resultat + "  *     *     *     *     *     *     *     *     *     *     *\n";
+            resultat = resultat + "  ******************(Spiller 2 skydeboard)*********************\n";
+            resultat = resultat + "     1     2     3     4     5     6     7     8     9    10    X\n";
+
+            return resultat;
+        }
+
+        
+        public string ValidateSunk(int x, int y, char tur)
+        {
+            //Vi mangler dette punkt dette kan ikke gøres på denne måde
+            string resultat = "";
+            int SunketTjek = 0;
+            int checkaltx1 = 9;
+            //spiller 1 og 2 er byttet om: spiller 1 spilleboard 2
+
+            char Player1 = tur;
+            bool LokalPlayer1 = false;
+            if(Player1 == '1')
+            {
+                LokalPlayer1 = true;
+            }
+
+            //Her der sørger vi for at det ramte skib er konstant når vi går ind i løkken
+            char RamtSkib1 = GameBoardHidden2[x - 1, y - 1];
+            char RamtSkib2 = GameBoardHidden1[x - 1, y - 1];
             
+            //denne her sørger for at målet ikke er tomt eller beskudt.
+            if ((RamtSkib1 != ' ' && RamtSkib1 != 'x') || (RamtSkib2 != ' ' && RamtSkib2 != 'x'))
+            {
+                while (checkaltx1 >= 0)
+                {
+
+                    for (int a = 0; a < 10; a++)
+                    {
+                        int checkalty1 = a;
+
+                        //Her der tjekker vi hvems tur det er samt om den er blank.
+                        if (LokalPlayer1)
+                        {
+                            if (GameBoardHidden2[checkaltx1, checkalty1] == RamtSkib1)
+                            {
+                                SunketTjek++;
+                            }
+                        }
+                        else if (!LokalPlayer1)
+                        {
+                            if (GameBoardHidden1[checkaltx1, checkalty1] == RamtSkib2)
+                            {
+                                SunketTjek++;
+                            }
+                        }
+                    }
+                    checkaltx1--;
+                }
+            }
+            if (SunketTjek <= 1)
+            {
+                resultat = "Sunket";
+            }
+
             return resultat;
         }
 
         public string Validate()
         {
-            
-            int checkaltx = 9;
-            string skibenavne = "HSDUP";
-            
-            
-            while (checkaltx >= 0)
+
+            bool SkibFundet1 = false;
+            bool SkibFundet2 = false;
+
+            string WinnerFound = "";
+            string skibenavne = "HBDUP";
+
+            int checkaltx1 = 9;
+            int checkaltx2 = 9;
+
+
+            //Board 1
+            while (checkaltx1 >= 0)
             {
-                
-                for (int a = 0; a < 10; a++) { 
-                int checkalty = a;
-                    if (skibenavne.IndexOf(GameBoard2[checkaltx, checkalty]) > -1 /*&& GameBoard2[checkaltx, checkalty] != ' '*/)
-                    {
-                        winnerstring = "";
-                        break;
-                    }
-                    else 
-                    {
-                        winnerstring = "Winner";
-                        
-                    }
-            }
-                    checkaltx--;
-            }
-            return winnerstring;
-            
 
+                for (int a = 0; a < 10; a++)
+                {
+                    int checkalty1 = a;
 
+                    
+                    if (skibenavne.IndexOf(GameBoard1[checkaltx1, checkalty1]) > 1)
+                    {
+                        SkibFundet1 = true;
+                    }
+                }
+                checkaltx1--;
+            }
+
+            //Board 2
+            while (checkaltx2 >= 0)
+            {
+
+                for (int a = 0; a < 10; a++)
+                {
+                    int checkalty2 = a;
+
+                  
+                    if (skibenavne.IndexOf(GameBoard2[checkaltx2, checkalty2]) > 1)
+                    {
+                        SkibFundet2 = true;
+                    }
+                }
+                checkaltx2--;
+            }
+
+            if (!SkibFundet1 || !SkibFundet2)
+            {
+                WinnerFound = "Winner";
+            }
+
+            return WinnerFound;
         }
+
 
         internal void Skydbrik(int x, int y, char tur)
         {
+            //Spiller 1 = gameboard 1 && 3
+            //Spiller 2 = gameboard 2 && 4
+
+            //Dette kunne man have brugt:
+            //char[] skibe = { 'H', 'D', 'P', 'U', 'B' };
+            // skibe.Contains(GameBoard2[x - 1, y - 1])
             
+
+
             if (tur == '1')
             {
-                if(GameBoard2[x - 1,y - 1] == ' ')//GameBoard3 modspillers board
-                {
-                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
-                    Console.WriteLine("plask");
-                }
-                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
-                {
-                    Console.WriteLine("Du har allerede ramt her");
-                }
-                else
-                {
-                    GameBoard2[x - 1,y - 1] = 'x';//GameBoard3 modspilleres board
-                    Console.WriteLine("Ramt");
-                }
-            }
-            if (tur == '2')
-            {
-                
+
                 if (GameBoard2[x - 1,y - 1] == ' ')//GameBoard2 modspillers board
                 {
-                    GameBoard2[x - 1,y - 1] = 'o';//GameBoard4 sin egen skydeboard
+                    GameBoard3[x - 1,y - 1] = 'o';//GameBoard1 sin egen skydeboard
+                    GameBoard2[x - 1, y - 1] = 'o';
+
                     Console.WriteLine("plask");
+                    Console.ReadLine();
                 }
-                else if (GameBoard2[x - 1,y - 1] == 'x')//GameBoard4 sin egen skydeboard
+                else if (GameBoard3[x - 1, y - 1] == 'x')//GameBoard1 sin egen skydeboard
                 {
                     Console.WriteLine("Du har allerede ramt her");
+                    Console.ReadLine();
                 }
                 else
                 {
                     GameBoard2[x - 1,y - 1] = 'x';//GameBoard2 modspilleres board
+                    GameBoard3[x - 1, y - 1] = 'x';//sit eget skydeboard
+                    GameBoardHidden2[x - 1, y - 1] = 'x';//afmærker hiddenboard
+                  
+
                     Console.WriteLine("Ramt");
+                    Console.ReadLine();
                 }
+            }
+
+            if (tur == '2')
+            {
+                
+                if (GameBoard1[x - 1,y - 1] == ' ')//GameBoard1 modspillers board
+                {
+                    GameBoard4[x - 1,y - 1] = 'o';//GameBoard2 sin egen skydeboard
+                    GameBoard1[x - 1, y - 1] = 'o';//Modstanderens board
+                    Console.WriteLine("plask");
+                    Console.ReadLine();
+                }
+                else if (GameBoard4[x - 1,y - 1] == 'x')//GameBoard2 sin egen skydeboard
+                {
+                    Console.WriteLine("Du har allerede ramt her");
+                    Console.ReadLine();
+
+                }
+                else
+                {
+                    GameBoard1[x - 1,y - 1] = 'x';//GameBoard1 modspilleres board
+                    GameBoard4[x - 1, y - 1] = 'x';//Sit eget skydeboard
+                    GameBoardHidden1[x - 1, y - 1] = 'x';//afmærker hiddenboard
+
+                    Console.WriteLine("Ramt");
+                    Console.ReadLine();
+
+                }
+
             }
             
         }
 
-        internal string SætSkib(int a, int b, int d, char c, string e)
+        internal string SætSkib(int d, char c, int f, int b)
         {
-            
 
-            string Success = "";
+            //Sætter x og y
+            Console.WriteLine("Indtast x-coordinaten");
+
+            int x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Indtast y-coordinat");
+
+            int y = Convert.ToInt32(Console.ReadLine());
+
             bool Collision = false;
 
             
-            string Rotation = e;
-            int x = a;
-            int y = b;
+
+            //Rotation
+
+            string Rotation = "";
+           
+
+                Console.WriteLine("Roter? y = vertikalt / n = Horizontalt");
+
+                string RotationTemp = Console.ReadLine();
+
+                if (RotationTemp == "y" && y <= 11 - d)
+                {
+                    Rotation = "y";
+
+                    
+                }
+                else if (RotationTemp == "n" && x <= 11 - d)
+                {
+
+                    Rotation = "n";
+                    
+                }
+                else
+                {
+                    //Console.WriteLine("Ugyldig rotation, prøv igen");
+                    Collision = true;
+                    
+                }
+            
+
+            string Success = "";
+
+            //char ShipHidden = (char)b;
+
+            char ShipHidden = ' ';
+
+            if(b == 9) { ShipHidden = '9'; };
+            if (b == 8) { ShipHidden = '8'; };
+            if (b == 7) { ShipHidden = '7'; };
+            if (b == 6) { ShipHidden = '6'; };
+            if (b == 5) { ShipHidden = '5'; };
+            if (b == 4) { ShipHidden = '4'; };
+            if (b == 3) { ShipHidden = '3'; };
+            if (b == 2) { ShipHidden = '2'; };
+            if (b == 1) { ShipHidden = '1'; };
+            //int ShipHidden = b;
+
             //d = SLength || type
             //c = skibstype (D || H)
+            int Spiller = f;
+            //hvis man vil lave flere spillere skal man ændre if(spiller == )
 
-            
-
-            //Lav en forløkke som tester for fejl
-
-            
+            int NulRotation = 0;
+            int JaRotation = 0;
 
             //y = ja rotation, n = nej rotation
-            if (Rotation == "n")
-            {
+            
                 //sætter -1 ved d da løkken laver skibene et tak for langt.
-                if (x <= 10 - d && y <= 10)
+                if (x <= 11 - d && y <= 10)
                 {
+
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        if (GameBoard2[x + i - 1, y - 1] != ' ')
+                        //intern rotation
+                        if (Rotation == "n")
                         {
-                            Collision = true;
+                            NulRotation = i;
+                            JaRotation = 0;
+                        }
+                        else
+                        {
+                            NulRotation = 0;
+                            JaRotation = i;
+                        }
+
+                            if (Spiller == 1)
+                            {
+                            if (GameBoard1[x + NulRotation - 1, y + JaRotation - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
+                        }
+                        else
+                        {
+                            if (GameBoard2[x + NulRotation - 1, y + JaRotation - 1] != ' ')
+                            {
+                                Collision = true;
+                            }
                         }
                     }
                 }
 
-                if (x <= 10 - d && y <= 10 && !Collision)
+                if (x <= 11 - d && y <= 10 && !Collision)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
-                        GameBoard2[x + i - 1, y - 1] = c;
+                        //intern rotation
+                        if (Rotation == "n")
+                        {
+                            NulRotation = i;
+                            JaRotation = 0;
+                        }
+                        else
+                        {
+                            NulRotation = 0;
+                            JaRotation = i;
+                        }
+
+                        if (Spiller == 1)
+                        {
+                        //c
+                            GameBoard1[x + NulRotation - 1, y + JaRotation - 1] = c;
+                            GameBoardHidden1[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
+                        }
+                        else
+                        {
+                            GameBoard2[x + NulRotation - 1, y + JaRotation - 1] = c;
+                            GameBoardHidden2[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
+                        }
                     }
 
                     Success = "Correct";
@@ -337,36 +641,16 @@ namespace spil
                 {
                     Success = "Fejl";
                 }
+            
+
+            if (f == 1)
+            {
+                Console.WriteLine(GetGameBoardView1());
             }
             else
             {
-                if (x <= 10 - d && y <= 10)
-                {
-                    for (int i = 0; i <= d - 1; i = i + 1)
-                    {
-                        if (GameBoard2[x - 1, y + i - 1] != ' ')
-                        {
-                            Collision = true;
-                        }
-                    }
-                }
-
-                if (x <= 10 - d && y <= 10 && !Collision)
-                {
-                    for (int i = 0; i <= d - 1; i = i + 1)
-                    {
-                        GameBoard2[x - 1, y + i - 1] = c;
-                    }
-
-                    Success = "Correct";
-                }
-                else
-                {
-                    Success = "Fejl";
-                }
-
-            }   
-
+                Console.WriteLine(GetGameBoardView2());
+            }
             return Success;
 
         }
