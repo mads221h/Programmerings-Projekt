@@ -343,7 +343,8 @@ namespace spil
                         {
                             Spiller1 = true;
                         }
-
+                        Console.WriteLine("SKift til næste spiller tryk enter");
+                        Console.ReadLine();
                         break;
                     }
                     else
