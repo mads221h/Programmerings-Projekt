@@ -372,6 +372,7 @@ namespace spil
                 }
                 
             }
+           
             return winnerstring;
 
         }

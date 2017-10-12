@@ -11,6 +11,9 @@ namespace Test
         public void NeitherPlayerHasThreeInARow()
         {
             TicTacToe ticTacToe = new TicTacToe();
+              
+            
+
             const string expectet ="";
             string actual = ticTacToe.Validate();
             Assert.AreEqual(expectet, actual); 
