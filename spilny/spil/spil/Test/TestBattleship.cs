@@ -7,6 +7,9 @@ namespace Test
     [TestClass]
     public class TestBattleship
     {
+        //bare et navn
+        public char[,] GameBoard1 { get; private set; }
+
         //[TestMethod]
         //public void NeitherPlayerHasThreeInARow()
         //{
@@ -21,11 +24,22 @@ namespace Test
         //{
         //    Battleship battleship = new Battleship();
 
-        //    const string expectet = "";
+        //   //det er bare et navn
+        //  GameBoard1 = new char[10, 10]
+        //    {
+        //        { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', 'H', 'H', 'H', 'H', 'H', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        //    };
 
-        //    string actual = ;
-
-        //    Assert.AreEqual(expectet, actual);
+        //    Assert.AreEqual('H', Battleship.SætSkib());
         //}
 
 

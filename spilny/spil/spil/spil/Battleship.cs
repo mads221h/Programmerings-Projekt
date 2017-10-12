@@ -322,6 +322,7 @@ namespace spil
             //Vi mangler dette punkt dette kan ikke gøres på denne måde
             string resultat = "";
             int SunketTjek = 2;
+            //bruger vi til at køre igennem hele boarded
             int checkaltx1 = 9;
             //spiller 1 og 2 er byttet om: spiller 1 spilleboard 2
 
@@ -518,7 +519,6 @@ namespace spil
             
 
             //Rotation
-
             string Rotation = "";
            
 
