@@ -243,7 +243,10 @@ namespace spil
                        
                     }
                 }
+                
                 Console.Clear();
+                Console.WriteLine("Skift til næste spiller tryk enter");
+                Console.ReadLine();
 
                 //Spiller valg
                 PuttingShipPlayer++;
@@ -343,7 +346,8 @@ namespace spil
                         {
                             Spiller1 = true;
                         }
-                        Console.WriteLine("SKift til næste spiller tryk enter");
+                        Console.Clear();
+                        Console.WriteLine("Skift til næste spiller tryk enter");
                         Console.ReadLine();
                         break;
                     }
