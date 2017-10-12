@@ -317,28 +317,57 @@ namespace spil
         }
 
         
-        public string ValidateSunk()
+        public string ValidateSunk(int x, int y, char tur)
         {
-            //Vi mangler dette punkt
+            //Vi mangler dette punkt dette kan ikke gøres på denne måde
             string resultat = "";
-
+            int SunketTjek = 0;
             int checkaltx1 = 9;
+            //spiller 1 og 2 er byttet om: spiller 1 spilleboard 2
 
-            while (checkaltx1 >= 0)
+            char Player1 = tur;
+            bool LokalPlayer1 = false;
+            if(Player1 == '1')
             {
+                LokalPlayer1 = true;
+            }
 
-                for (int a = 0; a < 10; a++)
+            //Her der sørger vi for at det ramte skib er konstant når vi går ind i løkken
+            char RamtSkib1 = GameBoardHidden2[x - 1, y - 1];
+            char RamtSkib2 = GameBoardHidden1[x - 1, y - 1];
+            
+            //denne her sørger for at målet ikke er tomt eller beskudt.
+            if ((RamtSkib1 != ' ' && RamtSkib1 != 'x') || (RamtSkib2 != ' ' && RamtSkib2 != 'x'))
+            {
+                while (checkaltx1 >= 0)
                 {
-                    int checkalty1 = a;
 
-
-                    if (GameBoard1[checkaltx1, checkalty1] == '9')
+                    for (int a = 0; a < 10; a++)
                     {
-                        resultat = "Sunket";
+                        int checkalty1 = a;
+
+                        //Her der tjekker vi hvems tur det er samt om den er blank.
+                        if (LokalPlayer1)
+                        {
+                            if (GameBoardHidden2[checkaltx1, checkalty1] == RamtSkib1)
+                            {
+                                SunketTjek++;
+                            }
+                        }
+                        else if (!LokalPlayer1)
+                        {
+                            if (GameBoardHidden1[checkaltx1, checkalty1] == RamtSkib2)
+                            {
+                                SunketTjek++;
+                            }
+                        }
                     }
-                    
+                    checkaltx1--;
                 }
-                checkaltx1--;
+            }
+            if (SunketTjek <= 1)
+            {
+                resultat = "Sunket";
             }
 
             return resultat;
@@ -346,7 +375,6 @@ namespace spil
 
         public string Validate()
         {
-
 
             bool SkibFundet1 = false;
             bool SkibFundet2 = false;
@@ -414,12 +442,12 @@ namespace spil
 
             if (tur == '1')
             {
-                
 
                 if (GameBoard2[x - 1,y - 1] == ' ')//GameBoard2 modspillers board
                 {
                     GameBoard3[x - 1,y - 1] = 'o';//GameBoard1 sin egen skydeboard
                     GameBoard2[x - 1, y - 1] = 'o';
+
                     Console.WriteLine("plask");
                     Console.ReadLine();
                 }
@@ -432,6 +460,9 @@ namespace spil
                 {
                     GameBoard2[x - 1,y - 1] = 'x';//GameBoard2 modspilleres board
                     GameBoard3[x - 1, y - 1] = 'x';//sit eget skydeboard
+                    GameBoardHidden2[x - 1, y - 1] = 'x';//afmærker hiddenboard
+                  
+
                     Console.WriteLine("Ramt");
                     Console.ReadLine();
                 }
@@ -457,6 +488,8 @@ namespace spil
                 {
                     GameBoard1[x - 1,y - 1] = 'x';//GameBoard1 modspilleres board
                     GameBoard4[x - 1, y - 1] = 'x';//Sit eget skydeboard
+                    GameBoardHidden1[x - 1, y - 1] = 'x';//afmærker hiddenboard
+
                     Console.WriteLine("Ramt");
                     Console.ReadLine();
 
@@ -513,11 +546,21 @@ namespace spil
 
             string Success = "";
 
-            char ShipHidden = (char)b;
+            //char ShipHidden = (char)b;
 
-            
+            char ShipHidden = ' ';
+
+            if(b == 9) { ShipHidden = '9'; };
+            if (b == 8) { ShipHidden = '8'; };
+            if (b == 7) { ShipHidden = '7'; };
+            if (b == 6) { ShipHidden = '6'; };
+            if (b == 5) { ShipHidden = '5'; };
+            if (b == 4) { ShipHidden = '4'; };
+            if (b == 3) { ShipHidden = '3'; };
+            if (b == 2) { ShipHidden = '2'; };
+            if (b == 1) { ShipHidden = '1'; };
             //int ShipHidden = b;
-            
+
             //d = SLength || type
             //c = skibstype (D || H)
             int Spiller = f;
@@ -581,6 +624,7 @@ namespace spil
 
                         if (Spiller == 1)
                         {
+                        //c
                             GameBoard1[x + NulRotation - 1, y + JaRotation - 1] = c;
                             GameBoardHidden1[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
                         }

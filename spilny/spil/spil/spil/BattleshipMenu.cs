@@ -8,7 +8,7 @@ namespace spil
 {
     class BattleshipMenu
     {
-        
+
         //spiller = hvis tur det er under skyde fasen.
         bool Spiller1 = false;
         //bool PlaceringAfSkibe = true;
@@ -127,7 +127,7 @@ namespace spil
                 //Alternativ for test
                 int NumHangar = 0;
                 int NumBattleShip = 0;
-                int NumDestroyer = 0;
+                int NumDestroyer = 1;
                 int NumUbåd = 0;
                 int NumPatruljeBåd = 2;
 
@@ -202,7 +202,6 @@ namespace spil
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
                 }
 
                 //Ubåd
@@ -223,9 +222,7 @@ namespace spil
                         Console.WriteLine("Ugyldig position, prøv igen.");
                         Console.ReadLine();
                     }
-
                 }
-
                 //patruljebåd
                 while (NumPatruljeBåd > 0)
                 {
@@ -264,9 +261,6 @@ namespace spil
 
             if (PuttingShip)
             {
-
-
-
                 if (Spiller1 == false)
                 {
                     Console.WriteLine(battleship.GetGameBoardView1());
@@ -280,8 +274,11 @@ namespace spil
 
                 char tur;
 
+                //Denne while løkke bliver ved med at køre indtil man bruger break; da vi forventer korrekt valg.
                 while (true)
                 {
+                    //den skal bruge til at tjekke om der er blevet sunket et skib
+                    bool SunketStatus = false;
 
                     Console.Clear();
 
@@ -307,13 +304,17 @@ namespace spil
 
                     if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
                     {
+                        if (battleship.ValidateSunk(x, y, tur) == "Sunket")
+                        {
+                            SunketStatus = true;
+                        }
 
                         battleship.Skydbrik(x, y, tur);
 
-                        if(battleship.ValidateSunk() == "Sunket")
+                        if (SunketStatus)
                         {
-
-
+                            Console.WriteLine("Skib Sunket");
+                            Console.ReadLine();
                         }
 
                         if (battleship.Validate() == "Winner")
