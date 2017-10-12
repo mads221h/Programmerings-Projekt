@@ -321,7 +321,7 @@ namespace spil
         {
             //Vi mangler dette punkt dette kan ikke gøres på denne måde
             string resultat = "";
-            int SunketTjek = 0;
+            int SunketTjek = 2;
             int checkaltx1 = 9;
             //spiller 1 og 2 er byttet om: spiller 1 spilleboard 2
 
@@ -335,10 +335,12 @@ namespace spil
             //Her der sørger vi for at det ramte skib er konstant når vi går ind i løkken
             char RamtSkib1 = GameBoardHidden2[x - 1, y - 1];
             char RamtSkib2 = GameBoardHidden1[x - 1, y - 1];
-            
+
             //denne her sørger for at målet ikke er tomt eller beskudt.
+            
             if ((RamtSkib1 != ' ' && RamtSkib1 != 'x') || (RamtSkib2 != ' ' && RamtSkib2 != 'x'))
             {
+                SunketTjek = 0;
                 while (checkaltx1 >= 0)
                 {
 
@@ -545,21 +547,9 @@ namespace spil
             
 
             string Success = "";
-
-            //char ShipHidden = (char)b;
-
-            char ShipHidden = ' ';
-
-            if(b == 9) { ShipHidden = '9'; };
-            if (b == 8) { ShipHidden = '8'; };
-            if (b == 7) { ShipHidden = '7'; };
-            if (b == 6) { ShipHidden = '6'; };
-            if (b == 5) { ShipHidden = '5'; };
-            if (b == 4) { ShipHidden = '4'; };
-            if (b == 3) { ShipHidden = '3'; };
-            if (b == 2) { ShipHidden = '2'; };
-            if (b == 1) { ShipHidden = '1'; };
-            //int ShipHidden = b;
+            
+            //Konvertere int til char
+            char ShipHidden = (char)b;
 
             //d = SLength || type
             //c = skibstype (D || H)
@@ -624,8 +614,9 @@ namespace spil
 
                         if (Spiller == 1)
                         {
-                        //c
+                        //Visible
                             GameBoard1[x + NulRotation - 1, y + JaRotation - 1] = c;
+                        //Hidden
                             GameBoardHidden1[x + NulRotation - 1, y + JaRotation - 1] = ShipHidden;
                         }
                         else
