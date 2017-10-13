@@ -41,7 +41,7 @@ namespace spil
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
             };
 
-            //vi laver Gameboard2
+            
             GameBoard2 = new char[10, 10] {
                 { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' } ,
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -319,13 +319,13 @@ namespace spil
         
         public string ValidateSunk(int x, int y, char tur)
         {
-            //Vi mangler dette punkt dette kan ikke gøres på denne måde
+            
             string resultat = "";
             int SunketTjek = 2;
             //bruger vi til at køre igennem hele boarded
             int checkaltx1 = 9;
+           
             //spiller 1 og 2 er byttet om: spiller 1 spilleboard 2
-
             char Player1 = tur;
             bool LokalPlayer1 = false;
             if(Player1 == '1')
@@ -375,7 +375,7 @@ namespace spil
 
             return resultat;
         }
-
+        //Her tjekker vi om der er en vinder.
         public string Validate()
         {
 
@@ -436,12 +436,6 @@ namespace spil
         {
             //Spiller 1 = gameboard 1 && 3
             //Spiller 2 = gameboard 2 && 4
-
-            //Dette kunne man have brugt:
-            //char[] skibe = { 'H', 'D', 'P', 'U', 'B' };
-            // skibe.Contains(GameBoard2[x - 1, y - 1])
-            
-
 
             if (tur == '1')
             {
@@ -520,7 +514,6 @@ namespace spil
 
             //Rotation
             string Rotation = "";
-           
 
                 Console.WriteLine("Roter? y = vertikalt / n = Horizontalt");
 
@@ -564,7 +557,6 @@ namespace spil
                 //sætter -1 ved d da løkken laver skibene et tak for langt.
                 if (x <= 11 - d && y <= 10)
                 {
-
                     for (int i = 0; i <= d - 1; i = i + 1)
                     {
                         //intern rotation
@@ -579,6 +571,7 @@ namespace spil
                             JaRotation = i;
                         }
 
+                        //Validering af placering
                             if (Spiller == 1)
                             {
                             if (GameBoard1[x + NulRotation - 1, y + JaRotation - 1] != ' ')
@@ -595,7 +588,7 @@ namespace spil
                         }
                     }
                 }
-
+                //Godkendt placering
                 if (x <= 11 - d && y <= 10 && !Collision)
                 {
                     for (int i = 0; i <= d - 1; i = i + 1)
