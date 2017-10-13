@@ -9,7 +9,10 @@ namespace spil
     public class Battleship
     {
         
-   
+   //kunne bruge:  .clone til at forkorte.
+   //kunne bruge: lave et 2d char variabel 
+   //kunne brue: foreach til at validere gameboarded. foreach(char c in Gameboard) 
+
         //Skibe sætning
         public char[,] GameBoard1 { get; set; }
 
@@ -499,6 +502,7 @@ namespace spil
         internal string SætSkib(int d, char c, int f, int b)
         {
 
+
             //Sætter x og y
             Console.WriteLine("Indtast x-coordinaten");
 
@@ -510,7 +514,7 @@ namespace spil
 
             bool Collision = false;
 
-            
+            // fejl, vi kunne bruge try catch til at tjekke out of bounce.
 
             //Rotation
             string Rotation = "";
