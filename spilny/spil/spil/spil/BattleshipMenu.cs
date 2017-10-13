@@ -99,6 +99,7 @@ namespace spil
 
 
         }
+        //placering af skibe
         private void DoActionFor2()
         {
             int ShipLength = 0;
@@ -184,7 +185,7 @@ namespace spil
                     }
                 }
                 //Destroyer.
-                while (NumDestroyer > 0)
+                while (NumDestroyer > 0 )
                 {
                     Console.WriteLine("Du har " + NumDestroyer + " destroyer tilbage");
 
@@ -257,7 +258,7 @@ namespace spil
 
             }
         }
-
+        //Skyd på skibe
         private void DoActionFor3()
         {
             //int spilletur = 1;
@@ -298,11 +299,11 @@ namespace spil
                         tur = '2';
                     }
 
-                    Console.WriteLine("Player " + tur);
-                    Console.WriteLine("vælg x cordinaterne");
+                    Console.WriteLine("Spiller " + tur);
+                    Console.WriteLine("vælg x koordinaterne");
 
                     int x = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("vælg y cordinaterne");
+                    Console.WriteLine("vælg y koordinaterne");
                     int y = Convert.ToInt32(Console.ReadLine());
 
                     if (x <= 10 && x >= 0 && y <= 10 && y >= 0)
